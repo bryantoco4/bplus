@@ -1,0 +1,2263 @@
+/* Minification failed. Returning unminified contents.
+: run-time error CSS1036: Expected expression, found ''
+: run-time error CSS1036: Expected expression, found ''
+: run-time error CSS1036: Expected expression, found ''
+ */
+/*@charset "utf-8";*/
+#mensajeCuenta {
+    /* Tamaño y color del mensaje de cambio de cuenta */
+    color: #5E92C0; /* Color azul claro */
+    font-size: 9px;
+    margin: 10px 0px 10px 5px; /* Margen superior e inferior de 10px, margen izquierdo de 5px */
+    font-weight: bold;
+}
+
+.rowsHeader {
+    font-family: Arial;
+    color: #33CCFF;
+    font-size: medium;
+}
+
+.rowssFooter {
+    font-family: Arial;
+    color: Black;
+    font-size: small;
+    font: bold;
+}
+
+.rowsDataImpar {
+    font-family: Arial;
+    color: Gray;
+    background-color: #EAEAEA;
+}
+
+.breakWord {
+    word-wrap: break-word;
+}
+
+/* CSS Document */
+/*
+*/
+/* ESTILOS COMUNES A TODAS LAS PÁGINAS	*/
+#contenedor {
+    /* Todo el contenido va entre estas etiquetas para que quede centrado todo */
+    margin-left: auto;
+    margin-right: auto;
+    width: 600px;
+}
+
+#contenedorSinMenu {
+    /* Todo el contenido va entre estas etiquetas para que quede centrado todo */
+    margin-left: auto;
+    margin-right: auto;
+    width: 670px;
+}
+
+body {
+    /* Todas las páginas llevan por defecto Arial como fuente principal, 11 de tamaño y color gris */
+    color: #606060;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 11px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+a {
+    /* Los links por defecto van a tener este tono de azul */
+    color: #2D4B84;
+}
+
+h1 {
+    /* A ser usado como título en las páginas: Arial (por defecto en el body), tamamño 14 */
+    color: #929292;
+    font-size: 14px;
+    margin: 0px;
+    width: 262px;
+    height: 16px;
+}
+
+    h1 .activo {
+        /* Indica sub-sección en los títulos, representada con el color naranja  							está para ser usado en conjunto con h1. Del h1 se hereda el tipo de fuente (arial) 							y el tamaño 14px */
+        color: #DEB406;
+    }
+
+h2 {
+    /* con h2 definimos los sub-títulos. Por ejemplo, los títulos de las tablas */
+    color: #5E92C0; /* Color azul claro */
+    font-size: 12px;
+    margin: 10px 0px 10px 5px; /* Margen superior e inferior de 10px, margen izquierdo de 5px */
+    font-weight: bold;
+    text-align: center;
+}
+
+h3 {
+    /* con h3 definimos los títulos de 3er nivel. Por ejemplo los títulos de las tablas 							en la página de consultas */
+    color: #717171;
+    font-size: 12px;
+    font-weight: bold;
+    margin: 0px;
+    padding: 0px 0px 5px 0px;
+}
+
+#herramientas {
+    /* Para colocar los enlaces de Seguridad, Ayuda, etc...  							la fuente por defecto es Arial que viene del body, tamaño 10px */
+    font-size: 10px;
+    width: 292px;
+}
+
+    #herramientas a {
+        /* Establece el gris en los enlaces del menú de herramientas */
+        color: #717171;
+    }
+/* Menú principal 
+		Este menú se compone de dos partes, según los dos niveles de navegación que hay.
+	 	La primera parte corresponde al primer nivel de navegación. 
+  	 	Está diseñado para ser usado sobre una tabla de una columna. 
+*/
+.tdMenu {
+    border-bottom: dashed #FFFFFF 1px; /* Cada celda se separa una de otra por un borde blanco de puntos. */
+    padding: 0px; /* Cada uno de los elementos de la lista tienen una separación entre sí */
+    width: 139px;
+}
+
+.menu a {
+    /* este estilo es el que define todo el estilo del botón */
+    color: #2D4B84;
+    font-size: 12px;
+    font-weight: bold;
+    text-decoration: none;
+    display: block; /* Display Block para que el botón se active completo y no sólo el texto */
+    background-image: none;
+    padding: 5px 5px 5px 20px; /* Este estilo da los márgenes que requiere el botón, incluyendo 20px a la izq. */
+}
+
+.menu .activo {
+    /* Este estilo se coloca en el enlace que corresponda a la sección activa. */ /* También debe colocarse en el TD de la sección activa */
+    background-image: url(../images/fondo-menu-internas.gif); /* La sección activa de define con una banda azul a la dercha */
+    background-repeat: repeat-y;
+}
+
+.activoBarraAzul {
+    /* Este estilo se coloca en el enlace que corresponda a la sección activa. */ /* También debe colocarse en el TD de la sección activa */
+    background-image: url(../images/fondo-menu-internas.gif); /* La sección activa de define con una banda azul a la dercha */
+    background-repeat: repeat-y;
+    border-bottom: dashed #FFFFFF 1px; /* Cada celda se separa una de otra por un borde blanco de puntos. */
+    padding: 0px; /* Cada uno de los elementos de la lista tienen una separación entre sí */
+}
+
+
+.menu a:hover {
+    /* Efecto de rollover al botón: aparece una franja azul a la izquierda. */
+    background-image: url(../images/fondo-menu-internas.gif);
+    background-repeat: repeat-y;
+}
+/* Segunda parte del menú - segundo nivel */
+.menuSec {
+    /* El color por defecto de la fuente es azul */
+    color: #5E92C0;
+}
+
+    .menuSec ul {
+        /* El menú secundario se forma con listas (UL).  */
+        list-style: none; /* No tiene estilo de bullet */
+        margin: 0px 0px 0px 10px; /* Se les deja en 0 los margenes que trae por defecto y se coloca el izq en 10 */
+        padding: 0px 8px 10px 12px; /* Se le deja en 0 el padding que tiene por defecto y se le dan los espacios que requeire */
+    }
+
+    .menuSec li {
+        padding: 5px 0px 5px 10px; /* Cada uno de los elementos de la lista tienen una separación entre sí */
+    }
+
+    .menuSec a {
+        /* Con este estilo se quita los estilos del menú principal que se arrastra por defecto */
+        color: #606060;
+        font-size: 11px;
+        font-weight: normal;
+        padding: 0px;
+        margin: 0px;
+    }
+
+        .menuSec a:hover {
+            /* al pasar el mouse por encima, los enlaces cambian de color */
+            color: #5E92C0;
+            background: none;
+        }
+
+    .menuSec .activoSec {
+        /* este estilo indica la sub-sección que se encuentra actualmente                                    se aplica sobre el li. 								   Ejemplo: <li class="activoSec">Cuenta Corriente</li> */
+        color: #5E92C0;
+        background-image: url(../images/images-flechaAzul.gif);
+        background-repeat: no-repeat;
+        background-position: center left;
+    }
+        /* Añadido por Iván Márquez para permitir Link en el menú seleccionado */
+        .menuSec .activoSec a {
+            /* Con este estilo se quita los estilos del menú principal que se arrastra por defecto */
+            color: #5E92C0;
+        }
+
+.activoSec {
+    /* este estilo indica la sub-sección que se encuentra actualmente                                    se aplica sobre el li. 								   Ejemplo: <li class="activoSec">Cuenta Corriente</li> */
+    color: #5E92C0;
+    background-image: url(../images/images-flechaAzul.gif);
+    background-repeat: no-repeat;
+    background-position: center left;
+}
+/**/
+#contenido_internas {
+    /* Establece un margen de separación a la izquierda del contenido */
+    padding-left: 15px;
+}
+
+#pie {
+    /* Estilo del pie de página de la página de ingreso  						   se aplica a toda la tabla, por ello es que se inluye un margen superior de 15px 						   color gris y fuente de 10px. El arial se hereda del body */
+    color: #717171;
+    font-size: 10px;
+    padding-top: 15px;
+}
+
+    #pie p {
+        /* No hay espacio entre los párrafos del pie de página */
+        margin: 0px;
+    }
+
+#piegeneral {
+    /* Estilos para el pie del resto de las páginas 							se aplica a toda la tabla y por ello se inlcuyen márgenes 							se agregó al estilo la linea gris superior que divide el pie del contenido */
+    color: #717171;
+    font-size: 10px;
+    padding-top: 15px;
+    padding-left: 20px;
+    border-top: solid 1px #e7e7e7;
+}
+
+    #piegeneral p {
+        /* el pie tiene espacio 0 entre párrafos */
+        margin: 0px;
+    }
+
+input {
+    /* Estilo por defecto de los cuadros de entrada de texto de los formularios 							heredan el Arial del body, se les asignó 11px de tamaño y gris de color de fuente */
+    font-size: 11px;
+    color: #666666;
+    margin-left: 3px;
+    margin-bottom: 0px;
+    padding-top: 2px !important;
+}
+
+select {
+}
+
+textarea {
+    /* Estilo por defecto de los cuadros de entrada de texto de los formularios 							heredan el Arial del body, se les asignó 11px de tamaño y gris de color de fuente */
+    font-size: 11px;
+    color: #666666;
+    margin-left: 3px;
+    margin-bottom: 0px;
+    font-family: Arial;
+}
+
+.texto-obligatorio {
+    /* usasdo para campos obligatorios */ /*color:#E1BA06;*/ /* Naranja */
+    color: #0D1F4F;
+    font-weight: bold;
+    font-size: 16px;
+    text-align: center;
+}
+
+
+.texto-bold {
+    /* Reemplazo del <strong> */
+    font-weight: bold;
+}
+
+.texto-naranja {
+    color: #BF6000;
+    font-weight: bold;
+    font-size: 12px;
+}
+
+.texto-azul {
+    color: #5E92C0;
+}
+/* 	Botón estándard usado en la página 
+	el botón se arma con dos elementos: el <div> y el <a>
+	el estilo del <div> define la esquina izquierda
+	y el estilo del <a> define la esquina derecha 
+	así podemos hacer botones variando su contenido
+	mientras tengan una sola línea 
+	ejemplo de uso: 
+	<div id="boton"><a href="#">Aceptar</a></div>
+*/
+#boton {
+    background-image: url(bot-izq.gif);
+    background-repeat: no-repeat;
+    background-position: left;
+    padding: 5px 0px 5px 3px;
+}
+
+    #boton a {
+        color: #EBEBEB;
+        font-size: 11px;
+        font-weight: bold;
+        text-decoration: none;
+        background-image: url(bot-der.gif);
+        background-repeat: no-repeat;
+        background-position: right;
+        padding: 5px 23px 5px 20px;
+    }
+
+#boton-amarillo {
+    background-image: url(../images/bot-amarillo-izq.gif);
+    background-repeat: no-repeat;
+    background-position: left;
+    padding: 5px 0px 5px 3px;
+}
+
+    #boton-amarillo a {
+        color: #000;
+        font-size: 11px;
+        font-weight: bold;
+        text-decoration: none;
+        background-image: url(../images/bot-amarillo-der.gif);
+        background-repeat: no-repeat;
+        background-position: right;
+        padding: 5px 23px 5px 20px;
+    }
+
+#boton_largo {
+    background-image: url(bot-izq.gif);
+    background-repeat: no-repeat;
+    background-position: left;
+    padding: 5px 0px 5px 3px;
+}
+
+    #boton_largo a {
+        color: #EBEBEB;
+        font-size: 11px;
+        font-weight: bold;
+        text-decoration: none;
+        background-image: url(../images/bot-der-largo.gif);
+        background-repeat: no-repeat;
+        background-position: right;
+        padding: 5px 23px 5px 20px;
+    }
+
+.cabfecha {
+    /* En la cabecera de todas las páginas salvo el ingreso aparece la fecha del día.  								este estilo se aplica al td. Color gris-azulado, centrado en el cuadro, a 9px 								la fuente se hereda del body (arial) */
+    color: #5E92C0;
+    font-size: 9px;
+    text-align: center;
+}
+
+.cabnombre {
+    /* En la cabecera de todas las páginas salvo el ingreso llevan el nombre del usuario 								este estilo se aplica al td y define color gris-azulado, el tamaño de la fuente y el bold.  								El resto del estilo (Arial) se hereda del body. */
+    color: #5E92C0;
+    font-size: 12px;
+    font-weight: bold;
+}
+/* ESTILOS PARA EL INGRESO	
+La estructura de la página de ingreso es la siguiente:
+________________________________
+|      cabecera                |	Cabecera con el logo - no tiene ningún estilo en particular
+--------------------------------
+|       top ingreso            |	Esta zona contiene el título de la página, el menú de herramientas y el degradé de fondo. 
+--------------------------------
+         contenido libre			Aquí viene el contenido
+-------------------------------
+|        bottom ingreso        |	Esta zona contiene los términos y condiciones y el degradé decorativo de fondo
+--------------------------------
+|        pie				   |	Esa zona contiene la información del pie de página. 
+--------------------------------
+
+*/
+
+#topingreso {
+    /* Se define que el fondo decorativo se repita solo en x, y el margen que lleva 										esa zona (arriba 20, derecha 23px, abajo 20px, izquierda 23px)  */
+    background-repeat: repeat-x;
+    padding: 20px 23px 20px 23px;
+}
+
+#bottomingreso {
+    /* Se define que el fondo decorativo se repite en x y que se alinea abajo y los 								espacios que se requieren para esta zona (arriba 20, derecha 30px, abajo 8px, izquierda 12px) */
+    background-repeat: repeat-x;
+    background-position: 50% bottom;
+    padding: 20px 30px 8px 12px;
+    width: 670px;
+}
+/* estilo del Teclado	*/
+/* El teclado está construido con las letras en hmtl y 
+   únicamente los fondos son imágenes. El rollover se hace
+   utilizando la hoja de estilos. Esto nos permite cargar sólo
+   dos imágenes para armar el teclado en lugar de todas
+   las teclas correspondientes a cada letra o número.
+   El espaciado a la iquierda de cada grupo de teclas
+   se realiza con celdas de tablas en el código. 
+   Ejemplo: <div id="teclado"><a href="#">7</a><a href="#">8</a></div>
+*/
+
+#fondoteclado {
+    padding-top: 10px;
+    border-top: 1px solid #DDDDDD;
+    background-image: url('../images/fondo-teclado-empresas.gif');
+    padding-bottom: 5px;
+    width: 77%;
+}
+
+#teclado {
+    /* Define un espacio superior de 10px para el bloque completo de teclas,  									una línea azul en la parte superior del teclado, al igual que un fondo 									que se alinea abajo a la derecha. El teclado tiene un margen inferior de 5px */
+    padding-top: 10px; /*border-top:1px solid #DDDDDD;*/
+    background-position: right bottom;
+    padding-bottom: 5px;
+    width: 99%;
+    height: 118px;
+}
+
+#fondoteclado {
+    padding-top: 10px;
+    border-top: 1px solid #DDDDDD;
+    background-image: url('../images/fondo-teclado-empresas.gif');
+    padding-bottom: 5px;
+    width: 77%;
+}
+
+
+#teclado a {
+    /* Cada tecla hereda su estilo al colocar el enlace "a" */
+    color: #525252; /*La letra toma un color gris en bold, sin subrayado.*/
+    font-weight: bold;
+    font-size: 15px;
+    text-decoration: none;
+    background-image: url('bot-teclado.gif'); /*Toma automáticamente el fondo que le da el volumen al botón,*/
+    background-repeat: no-repeat;
+    width: 26px; /* se define un ancho fijo de 20px y un alto de 17px*/
+    height: 23px;
+    display: block; /* se despliega la información como bloque para que el enlace*/ /* no se marque sólo en en número sino en todo el ancho del botón, */
+    float: left; /* se pone a flotar a la izquierda para que las teclas se apilen*/ /* unas al lado de las otras y se alinea el texto al centro. */
+    padding-top: 4px;
+    text-align: center;
+}
+
+    #teclado a:hover {
+        background-image: url(../images/bot-teclado_f2.gif); /* se cambia el fondo cuando se hace rollover sobre el enlace */
+    }
+
+    #teclado a.final {
+        border-right: solid 1px #999999;
+        margin-left: 0px;
+    }
+
+    #teclado a.bottom {
+        border-bottom: solid 1px #999999;
+        margin-left: 0px;
+    }
+
+    #teclado a.borrar {
+        border-bottom: solid 1px #999999;
+        border-right: solid 1px #999999;
+        margin-left: 0px;
+        background-image: url('bot-borrarmodf.gif');
+        width: 52px; /* se define un ancho fijo de 20px y un alto de 17px*/
+        height: 23px;
+    }
+
+        #teclado a.borrar:hover {
+            background-image: url(../images/bot-borrarmodif_f2.gif); /* se cambia el fondo cuando se hace rollover sobre el enlace */
+        }
+
+
+/*Estilos para el teclado Factor 2 */
+#tecladof2 {
+    /* Define un espacio superior de 10px para el bloque completo de teclas,  									una línea azul en la parte superior del teclado, al igual que un fondo 									que se alinea abajo a la derecha. El teclado tiene un margen inferior de 5px */
+    padding-top: 10px;
+    border-top:1px solid #DDDDDD;
+    background-position: right bottom;
+    padding-bottom: 5px;
+    width: 99%;
+    height: 118px;
+}
+
+    #tecladof2 a {
+        /* Cada tecla hereda su estilo al colocar el enlace "a" */
+        color: #525252; /*La letra toma un color gris en bold, sin subrayado.*/
+        font-weight: bold;
+        font-size: 14px;
+        text-decoration: none;
+        background-image: url('bot-teclado.gif'); /*Toma automáticamente el fondo que le da el volumen al botón,*/
+        background-repeat: no-repeat;
+        width: 26px; /* se define un ancho fijo de 20px y un alto de 17px*/
+        height: 23px;
+        display: block; /* se despliega la información como bloque para que el enlace*/ /* no se marque sólo en en número sino en todo el ancho del botón, */
+        float: left; /* se pone a flotar a la izquierda para que las teclas se apilen*/ /* unas al lado de las otras y se alinea el texto al centro. */
+        padding-top: 4px;
+        text-align: center;
+    }
+
+        #tecladof2 a:hover {
+            background-image: url(../images/bot-teclado_f2.gif); /* se cambia el fondo cuando se hace rollover sobre el enlace */
+        }
+
+        #tecladof2 a.final {
+            border-right: solid 1px #999999;
+            margin-left: 0px;
+        }
+
+        #tecladof2 a.TecladoNumerico {
+        }
+
+        #tecladof2 a.bottom {
+            border-bottom: solid 1px #999999;
+            margin-left: 0px;
+        }
+
+        #tecladof2 a.borrar {
+            border-bottom: solid 1px #999999;
+            border-right: solid 1px #999999;
+            margin-left: 0px;
+            background-image: url('bot-borrarmodf.gif');
+            width: 52px; /* se define un ancho fijo de 20px y un alto de 17px*/
+            height: 23px;
+        }
+
+            #tecladof2 a.borrar:hover {
+                background-image: url(../images/bot-borrarmodif_f2.gif); /* se cambia el fondo cuando se hace rollover sobre el enlace */
+            }
+
+/* ESTILOS PARA EL CONSOLIDADO*/
+/* Tabla del consolidado 
+	Para formar la tabla se deben colocar los siguientes estilos:
+	- tabla_consolidado a la tabla que va a contener toda la información. 
+	  Ej: <table width="100%" border="0" cellpadding="0" cellspacing="0" class="tabla_consolidado">
+	- La primera fila de la tabla se debe definir como cabecera de columna. (Usar "th" en lugar de "td").
+	  Ej: <th width="15%" scope="col">Tipo</th>
+	- Se define el estilo de las filas pares en el TR que corresponda. 
+	  Ej:  <tr class="par">
+	- Se define en todas las celdas de la última columna el estilo ".saldo" para que queden a la dercha
+	  Ej: <td class="saldo">1.365,22</td> 
+	  Ej: <th class="saldo" scope="col">Saldo Disponible</th>
+	- Se define el estilo para la última fila llamado ".final"
+	  Ej: <tr class="final">
+*/
+
+.tabla_consolidado {
+    border-top: solid 1px #5E92C0; /* Borde azul al principio de la tabla */
+}
+
+    .tabla_consolidado th {
+        /* Estilo de la primera fila de la tabla */
+        color: #5E92C0; /* Textos azules */
+        font-size: 12px; /* Tamaño de fuente */
+        font-weight: normal; /* Le quitamos el bold por defecto del estilo */
+        text-align: left; /* Le quitamos el alineado central de los textos */
+        padding: 8px; /* Espacio interno de las celdas */
+        padding-left: 5px;
+        border-bottom: 1px solid #DDDDDD; /* Borde gris inferior */
+    }
+
+    .tabla_consolidado td {
+        /* Definición de todas las celdas de la tabla  */
+        padding: 5px;
+        border-bottom: 1px solid #DDDDDD;
+    }
+
+    .tabla_consolidado .final {
+        /* Definición de la última fila */
+        font-weight: bold;
+        color: #373737;
+    }
+
+    .tabla_consolidado .par {
+        /* Estilo para las filas pares de la tabla */
+        background-color: #F1F1F1;
+    }
+
+    .tabla_consolidado .saldo {
+        /* Estilo para la columna de saldo */
+        text-align: right; /* Los textos alienados a la dercha */
+        padding-right: 20px; /* Espacio adicional a la derecha */
+    }
+/* ESTILOS PARA CONSULTAS */
+.bordeizq {
+    border-left: solid 1px #D6D6D6;
+}
+
+.bordertop {
+    border-top: solid 1px #D6D6D6;
+}
+
+.tabla-consulta {
+    border-left: solid 1px #D6D6D6;
+    border-bottom: solid 1px #D6D6D6;
+    border-right: none;
+    background-image: url(../images/fondo-cuentas.gif);
+    background-repeat: repeat-x;
+    background-position: bottom;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.listaConsulta {
+    /* Estilo del drop-down list para las cuentas */
+    font-size: 10px;
+    color: #666666;
+    margin-left: 3px;
+    margin-bottom: 0px;
+    padding: 1px 0px;
+}
+
+.numeronuevo {
+    /* Estilo del drop-down list para las cuentas */
+    font-size: 10px;
+    color: #666666;
+    margin-left: 3px;
+}
+
+.radio-consulta {
+    margin: 0px;
+    padding: 0px;
+}
+
+.tabla-balance {
+    border-top: solid 1px #5E92C0; /* linea azul sobre la tabla */
+    border-bottom: solid 1px #D6D6D6; /* linea gris que termina la tabla */
+}
+
+    .tabla-balance td {
+        padding: 5px; /* espaciado entre las celdas de la tabla */
+    }
+
+    .tabla-balance .par {
+        /* se aplica sobre las filas pares */
+        background-color: #F1F1F1;
+    }
+
+    .tabla-balance .final {
+        /* Definición de la última fila */
+        font-weight: bold;
+        color: #373737;
+    }
+
+    .tabla-balance .saldo {
+        /* Estilo para la columna de saldo */
+        text-align: right; /* Los textos alienados a la dercha */
+        padding-right: 20px; /* Espacio adicional a la derecha */
+    }
+/* Tabla de movimientos 
+	Para formar la tabla se deben colocar los siguientes estilos:
+	- tabla-movimiento a la tabla que va a contener toda la información
+	- La primera fila de la tabla se debe definir como cabecera de columna. (Usar "th" en lugar de "td")
+	- Se define el estilo de las filas pares en el TR que corresponda
+	- Se define en todas las celdas de la última columna el estilo ".saldo" para que queden a 
+	- Se define el estilo para la última fila llamado ".final
+*/
+
+
+.tabla-movimientosHeaderRight {
+    border-top: solid 1px #5E92C0; /* Borde azul al principio de la tabla */
+}
+
+
+    .tabla-movimientosHeaderRight th {
+        /* Estilo de la primera fila de la tabla */
+        color: #5E92C0; /* Textos azules */
+        font-size: 12px; /* Tamaño de fuente */
+        font-weight: bold; /* Bold  */
+        padding: 8px; /* Espacio interno de las celdas */
+        padding-left: 5px;
+        border-bottom: 1px solid #DDDDDD; /* Borde gris inferior */
+    }
+
+    .tabla-movimientosHeaderRight td {
+        /* Definición de todas las celdas de la tabla  */
+        padding: 5px;
+        text-align: center;
+        border-bottom: 1px solid #DDDDDD;
+    }
+
+    .tabla-movimientosHeaderRight .totales {
+        /* Estilo para la fila de "totales" y de "vienen" */
+        font-weight: bold;
+        color: #373737;
+        background-color: #F5F7FB; /* Fondo azul */
+    }
+
+    .tabla-movimientosHeaderRight .par {
+        /* Estilo para las filas pares de la tabla */
+        background-color: #F1F1F1;
+    }
+
+    .tabla-movimientosHeaderRight .saldo {
+        /* Estilo para la columna de saldos debitos y créditos */
+        text-align: right; /* Los textos alienados a la dercha */
+        padding-right: 10px; /* Espacio adicional a la derecha */
+    }
+
+    .tabla-movimientosHeaderRight .monto {
+        /* Estilo para la columna de saldos debitos y créditos */
+        text-align: right; /* Los textos alienados a la dercha */
+        padding-right: 10px; /* Espacio adicional a la derecha */
+    }
+
+.tabla-movimientos {
+    border-top: solid 1px #5E92C0; /* Borde azul al principio de la tabla */
+    table-layout: fixed;
+    border-bottom: 1px solid #DDDDDD;
+}
+
+    .tabla-movimientos th {
+        /* Estilo de la primera fila de la tabla */
+        color: #5E92C0; /* Textos azules */
+        font-size: 12px; /* Tamaño de fuente */
+        font-weight: bold; /* Bold  */
+        text-align: left; /* Le quitamos el alineado central de los textos */
+        padding: 8px; /* Espacio interno de las celdas padding-left:5px;*/
+    }
+
+    .tabla-movimientos td {
+        /* Definición de todas las celdas de la tabla  */
+        padding: 5px;
+    }
+
+    .tabla-movimientos .totales {
+        /* Estilo para la fila de "totales" y de "vienen" */
+        font-weight: bold;
+        color: #373737;
+        background-color: #F5F7FB; /* Fondo azul */
+    }
+
+    .tabla-movimientos .par {
+        /* Estilo para las filas pares de la tabla */
+        background-color: #F1F1F1;
+    }
+
+    .tabla-movimientos .saldo {
+        /* Estilo para la columna de saldos debitos y créditos */
+        text-align: right; /* Los textos alienados a la dercha */ /* Espacio adicional a la derecha padding-right:10px;*/
+    }
+
+
+/**/
+.tabla-movimientos1 {
+    border-top: solid 1px #5E92C0; /* Borde azul al principio de la tabla */ /*table-layout:fixed;*/
+}
+
+    .tabla-movimientos1 th {
+        /* Estilo de la primera fila de la tabla */
+        color: #5E92C0; /* Textos azules */
+        font-size: 12px; /* Tamaño de fuente */
+        font-weight: bold; /* Bold  */
+        text-align: left; /* Le quitamos el alineado central de los textos */
+        padding: 8px; /* Espacio interno de las celdas padding-left:5px;*/
+        border-bottom: 1px solid #DDDDDD; /* Borde gris inferior */
+    }
+
+    .tabla-movimientos1 td {
+        /* Definición de todas las celdas de la tabla  */
+        padding: 5px;
+        border-bottom: 1px solid #DDDDDD;
+    }
+
+    .tabla-movimientos1 .totales {
+        /* Estilo para la fila de "totales" y de "vienen" */
+        font-weight: bold;
+        color: #373737;
+        background-color: #F5F7FB; /* Fondo azul */
+    }
+
+    .tabla-movimientos1 .par {
+        /* Estilo para las filas pares de la tabla */
+        background-color: #F1F1F1;
+    }
+
+    .tabla-movimientos1 .saldo {
+        /* Estilo para la columna de saldos debitos y créditos */
+        text-align: right; /* Los textos alienados a la dercha */ /* Espacio adicional a la derecha padding-right:10px;*/
+    }
+
+
+
+
+
+
+.tabla-movimientos2 {
+    /*border-top: solid 1px #5E92C0;  Borde azul al principio de la tabla */
+    /*table-layout: fixed;*/
+}
+
+    .tabla-movimientos2 th {
+        /* Estilo de la primera fila de la tabla */
+        color: #5E92C0; /* Textos azules */
+        font-size: 12px; /* Tamaño de fuente */
+        font-weight: bold; /* Bold  */
+        text-align: left; /* Le quitamos el alineado central de los textos */
+        padding: 8px; /* Espacio interno de las celdas padding-left:5px;*/
+        border-bottom: 1px solid #DDDDDD; /* Borde gris inferior */
+    }
+
+    .tabla-movimientos2 td {
+        /* Definición de todas las celdas de la tabla  */
+        padding: 5px;
+    }
+
+        .tabla-movimientos2 td .chks {
+            /* Definición de todas las celdas de checkbox  */
+            padding: 5px 0px 5px 0px;
+            width: 15px;
+            text-align: center;
+        }
+
+            .tabla-movimientos2 td .chks input {
+                margin-left: 0px;
+            }
+
+        .tabla-movimientos2 td .shortlbl {
+            /* Definición de todas las celdas de etiquetas cortas  */
+            width: 50px;
+            text-align: left;
+        }
+
+        .tabla-movimientos2 td .longlbl {
+            /* Definición de todas las celdas de etiquetas cortas  */
+            width: 70px;
+            text-align: left;
+        }
+
+    .tabla-movimientos2 .totales {
+        /* Estilo para la fila de "totales" y de "vienen" */
+        font-weight: bold;
+        color: #373737;
+        background-color: #F5F7FB; /* Fondo azul */
+    }
+
+    .tabla-movimientos2 .par {
+        /* Estilo para las filas pares de la tabla */
+        background-color: #F1F1F1;
+    }
+
+    .tabla-movimientos2 .saldo {
+        /* Estilo para la columna de saldos debitos y créditos */
+        text-align: right; /* Los textos alienados a la dercha */ /* Espacio adicional a la derecha padding-right:10px;*/
+    }
+
+.tabla-movimientos3 {
+    border-top: solid 1px #5E92C0; /* Borde azul al principio de la tabla */
+    table-layout: fixed;
+}
+
+    .tabla-movimientos3 th {
+        /* Estilo de la primera fila de la tabla */
+        color: #5E92C0; /* Textos azules */
+        font-size: 12px; /* Tamaño de fuente */
+        font-weight: bold; /* Bold  */
+        text-align: left; /* Le quitamos el alineado central de los textos */
+        padding: 8px; /* Espacio interno de las celdas padding-left:5px;*/
+        border-bottom: 1px solid #DDDDDD; /* Borde gris inferior */
+    }
+
+    .tabla-movimientos3 td {
+        /* Definición de todas las celdas de la tabla  */
+        padding: 5px;
+    }
+
+
+        .tabla-movimientos3 td .chks {
+            /* Definición de todas las celdas de checkbox  */
+            padding: 5px 0px 5px 0px;
+            width: 15px;
+            text-align: center;
+        }
+
+            .tabla-movimientos3 td .chks input {
+                margin-left: 0px;
+            }
+
+        .tabla-movimientos3 td .shortlbl {
+            /* Definición de todas las celdas de etiquetas cortas  */
+            width: 50px;
+            text-align: left;
+        }
+
+        .tabla-movimientos3 td .longlbl {
+            /* Definición de todas las celdas de etiquetas cortas  */
+            width: 70px;
+            text-align: left;
+        }
+
+    .tabla-movimientos3 .totales {
+        /* Estilo para la fila de "totales" y de "vienen" */
+        font-weight: bold;
+        color: #373737;
+        background-color: #F5F7FB; /* Fondo azul */
+    }
+
+    .tabla-movimientos3 .par {
+        /* Estilo para las filas pares de la tabla */
+        background-color: #F1F1F1;
+    }
+
+    .tabla-movimientos3 .saldo {
+        /* Estilo para la columna de saldos debitos y créditos */
+        text-align: right; /* Los textos alienados a la dercha */ /* Espacio adicional a la derecha padding-right:10px;*/
+    }
+/**/
+
+
+
+/* Tabla de movimientos para la tabla de consulta movimientos
+	Para formar la tabla se deben colocar los siguientes estilos:
+	- tabla-movimiento a la tabla que va a contener toda la información
+	- La primera fila de la tabla se debe definir como cabecera de columna. (Usar "th" en lugar de "td")
+	- Se define el estilo de las filas pares en el TR que corresponda
+	- Se define en todas las celdas de la última columna el estilo ".saldo" para que queden a 
+	- Se define el estilo para la última fila llamado ".final
+*/
+.tabla-movimientosConsolidado {
+    border-top: solid 1px #5E92C0; /* Borde azul al principio de la tabla */ /*table-layout:fixed;*/
+}
+
+    .tabla-movimientosConsolidado th {
+        /* Estilo de la primera fila de la tabla */
+        color: #5E92C0; /* Textos azules */
+        font-size: 12px; /* Tamaño de fuente */
+        font-weight: bold; /* Bold  */ /*text-align:left;				/* Le quitamos el alineado central de los textos */
+        padding: 8px; /* Espacio interno de las celdas padding-left:5px;*/
+        border-bottom: 1px solid #DDDDDD; /* Borde gris inferior */
+    }
+
+    .tabla-movimientosConsolidado td {
+        /* Definición de todas las celdas de la tabla  */
+        padding: 5px;
+        border-bottom: 1px solid #DDDDDD;
+    }
+
+    .tabla-movimientosConsolidado .totales {
+        /* Estilo para la fila de "totales" y de "vienen" */
+        font-weight: bold;
+        color: #373737;
+        background-color: #F5F7FB; /* Fondo azul */
+    }
+
+    .tabla-movimientosConsolidado .par {
+        /* Estilo para las filas pares de la tabla */
+        background-color: #F1F1F1;
+    }
+
+    .tabla-movimientosConsolidado .saldo {
+        /* Estilo para la columna de saldos debitos y créditos */
+        text-align: right; /* Los textos alienados a la dercha */ /* Espacio adicional a la derecha padding-right:10px;*/
+    }
+/* ESTILOS PARA TRANSFERENCIAS */
+.fondo-reg-transf {
+    /* fondo para el registro de cuenta en las tranferencias */
+    background-image: url(../images/fondo-registro-para-tranferencias.gif);
+    background-position: bottom right;
+    background-repeat: no-repeat;
+}
+/* ESTILOS PARA LA TRANSFERENCIA REALIZADA */
+.num-confirmacion {
+    font-size: 13px;
+    font-weight: bold;
+    background-color: #EBEBEB;
+    /*padding: 5px 10px 5px 10px;*/
+}
+/* ESTILOS PARA LA TRANSFERENCIA Confirmación de clave */
+.fondo-confirm-clave {
+    background-image: url('../images/fondo-confirmacion-clave.gif');
+    background-repeat: no-repeat;
+    background-position: right bottom;
+    height: 137px;
+}
+/* ESTILOS PARA PAGOS TDC */
+.monto-a-pagar {
+    font-weight: bold;
+    text-align: right;
+    padding-right: 10px;
+}
+
+.SibelButton {
+    color: #EBEBEB;
+    font-size: 11px;
+    font-weight: bold;
+    text-decoration: none;
+    background-image: url(bot-der.gif);
+    background-repeat: no-repeat;
+    background-position: right;
+    padding: 5px 23px 5px 20px;
+}
+
+.texto-azul-bold {
+    /* Los links por defecto van a tener este tono de azul */
+    color: #2D4B84;
+    font-weight: bold;
+}
+
+.hr-color-azul {
+    color: #2D4B84;
+    background-color: #2D4B84;
+    height: 1px;
+    size: 1;
+}
+
+.modalBackground {
+    background-color: Gray;
+    filter: alpha(opacity=70);
+    opacity: 0.7;
+}
+
+
+.modalProgressGreyBackground {
+    background: #CCCCCC;
+    filter: alpha(opacity=60);
+    opacity: 0.6;
+}
+
+.modalProgressRedBackground {
+    background: Red;
+    filter: alpha(opacity=60);
+    opacity: 0.6;
+}
+
+.modalPopup {
+    text-align: center;
+    padding-top: 30px;
+    border-style: solid;
+    border-width: 1px;
+    background-color: White;
+    width: 300px;
+    height: 100px;
+}
+/* //Producto:PagosMasivos Iter:1 20090715 Isbel Gónzalez.*/
+/* Control de subir archivos*/
+div.fileinputs {
+    position: relative;
+}
+
+div.fakefile {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    z-index: 1;
+}
+
+/*input.file {
+	position: relative;
+	text-align: right;
+	-moz-opacity:0;
+	filter:alpha(opacity: 0);
+	opacity: 0;
+	z-index: 2;
+    left: 0px;
+    bottom: 0px;
+    }*/
+/* Control de subir archivos omar*/
+.SI-FILES-STYLIZED label.cabinet {
+    width: 94px;
+    height: 24px;
+    background: url(../images/BotonExaminar.gif) 0 0 no-repeat;
+    display: block;
+    overflow: hidden;
+    cursor: hand;
+}
+
+.SI-FILES-STYLIZED input.file {
+    /*position: relative;*/
+    width: 76px;
+    height: 25px;
+    opacity: 0;
+    -moz-opacity: 0;
+    filter: progid:DXImageTransform.Microsoft.Alpha(opacity=0);
+}
+
+.texto-azul-h2 {
+    font-weight: bold;
+}
+
+/** Master Page **/
+.tdMenusup {
+    background-image: url('../images/fondo-menu.gif');
+    background-position: bottom right;
+}
+
+.tdMenuback {
+    background-image: url('../images/fondo-menu1.gif');
+    background-repeat: repeat-y;
+}
+
+.tdHeaderRight {
+    background: url('../images/header12.png');
+    background-repeat: no-repeat;
+    background-position: right;
+    height: 95px;
+}
+
+
+.classic {
+    padding: 0.8em 1em;
+}
+
+.custom {
+    padding: 0.5em 0.8em 0.8em 2em;
+}
+
+* html a:hover {
+    background: transparent;
+}
+
+.classic {
+    background: #FFFFAA;
+    border: 1px solid #FFAD33;
+}
+
+.critical {
+    background: #FFCCAA;
+    border: 1px solid #FF3334;
+}
+
+.help {
+    background: #9FDAEE;
+    border: 1px solid #2BB0D7;
+}
+
+.info {
+    background: #9FDAEE;
+    border: 1px solid #2BB0D7;
+}
+
+.warning {
+    background: #FFFFAA;
+    border: 1px solid #FFAD33;
+}
+
+.cuadroTexto:blur {
+}
+
+.cuadroTexto:focus {
+}
+
+.cuadroTexto {
+}
+
+#N2T_copy {
+    background-color: #333333;
+    color: #FFFFFF;
+    font-weight: bold;
+    font-size: 13px;
+    font-family: "Trebuchet MS";
+    width: 400px;
+    left: 0;
+    top: 0;
+    padding: 4px;
+    position: absolute;
+    text-align: left;
+    z-index: 20;
+    -moz-border-radius: 0 10px 10px 10px;
+    filter: progid: DXImageTransform.Microsoft.Alpha(opacity=87);
+    -moz-opacity: .87;
+    -khtml-opacity: .87;
+    opacity: .87;
+}
+
+
+#NT_copy {
+    border-radius: 4px;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-box-shadow: 5px 5px 8px #CCC;
+    -webkit-box-shadow: 5px 5px 8px #CCC;
+    box-shadow: 5px 5px 8px #CCC;
+    padding: 4px;
+    position: absolute;
+    text-align: left;
+    z-index: 20;
+    filter: progid: DXImageTransform.Microsoft.Alpha(opacity=87);
+    -moz-opacity: .87;
+    -khtml-opacity: .87;
+    opacity: .87;
+    display: inline;
+    position: absolute;
+    color: #111;
+    border: 2px solid #CCc;
+    background: #fff;
+    font-size: small;
+}
+
+#NT_copyToolbox {
+    border-radius: 4px;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-box-shadow: 5px 5px 8px #CCC;
+    -webkit-box-shadow: 5px 5px 8px #CCC;
+    box-shadow: 5px 5px 8px #CCC;
+    padding: 4px;
+    position: absolute;
+    text-align: left;
+    z-index: 20;
+    filter: progid: DXImageTransform.Microsoft.Alpha(opacity=87);
+    -moz-opacity: .87;
+    -khtml-opacity: .87;
+    opacity: .87;
+    display: inline;
+    position: absolute;
+    color: #111;
+    border: 2px solid #CCc;
+    background: #fff;
+    font-size: small;
+}
+
+.TooltipHtml {
+    display: none;
+}
+
+#simplemodal-overlay {
+    background-color: #aaaaaa;
+}
+
+#simplemodal-container {
+    background-color: #ffffff;
+    border: 8px solid #444;
+    padding: 12px;
+}
+
+
+.tdHeaderExpiracion {
+    background: url('bannerNuevo.png');
+    background-repeat: no-repeat;
+    background-position: left;
+    height: 95px;
+}
+
+.tdTopExpiracion {
+    background: url('fondo-ingreso-top.gif');
+    background-repeat: repeat-x;
+    background-position: right;
+    height: 54px;
+}
+
+.tdBottomExpiracion {
+    background: url('fondo-ingreso-bottom.gif');
+    background-repeat: repeat-x;
+    background-position: right;
+    height: 54px;
+}
+
+.tdDivision {
+    border-top: solid 1px #e7e7e7;
+}
+
+.texto-azul-h3 {
+    /* con h2 definimos los sub-títulos. Por ejemplo, los títulos de las tablas */
+    color: #5E92C0; /* Color azul claro */
+    font-size: 12px;
+    margin: 1px 0px 1px 0px; /* Margen superior e inferior de 10px, margen izquierdo de 5px */
+    font-weight: bold;
+}
+
+
+.tabla_dt {
+    border-top: solid 1px #5E92C0; /* Borde azul al principio de la tabla */
+    table-layout: fixed;
+}
+
+    .tabla_dt th {
+        /* Estilo de la primera fila de la tabla */
+        color: #5E92C0; /* Textos azules */
+        font-size: 12px; /* Tamaño de fuente */
+        font-weight: normal; /* Le quitamos el bold por defecto del estilo */
+        text-align: left; /* Le quitamos el alineado central de los textos */
+        padding: 8px; /* Espacio interno de las celdas */
+        padding-left: 5px;
+        border-bottom: 1px solid #DDDDDD; /* Borde gris inferior */
+    }
+
+    .tabla_dt td {
+        /* Definición de todas las celdas de la tabla  */
+        /*padding: 5px;*/
+        padding-top: 5px;
+        padding-bottom: 5px;
+        padding-right: 1px;
+        padding-right: 1px;
+        border-bottom: 1px solid #DDDDDD;
+    }
+
+    .tabla_dt .par {
+        /* Estilo para las filas pares de la tabla */
+        background-color: #F1F1F1;
+    }
+
+/* Estipo para el linkbutton de Registro Juridico */
+.disabledlinkbuttontext {
+    color: #EBEBEB;
+    font-size: 11px;
+    font-weight: bold;
+    text-decoration: none;
+    background-image: url(bot-der.gif);
+    background-repeat: no-repeat;
+    background-position: right;
+    padding: 5px 23px 5px 20px;
+    cursor: wait;
+    display: none;
+}
+
+.new_bottomingreso {
+    width: 100%;
+    height: 40px;
+    background-image: url(fondo-ingreso-bottom.gif);
+    background-repeat: repeat-x;
+    background-position: 50% bottom;
+}
+
+#boton {
+    background-image: url(bot-izq.gif);
+    background-repeat: no-repeat;
+    background-position: left;
+    padding: 5px 0px 5px 3px;
+}
+
+    #boton a {
+        color: #EBEBEB;
+        font-size: 11px;
+        font-weight: bold;
+        text-decoration: none;
+        background-image: url(bot-der.gif);
+        background-repeat: no-repeat;
+        background-position: right;
+        padding: 5px 23px 5px 20px;
+    }
+
+.botonnuevo {
+    text-align: center;
+}
+
+    .botonnuevo a {
+        display: block;
+        width: 62px;
+    }
+
+.texto-azul-left {
+    /* con h2 definimos los sub-títulos. Por ejemplo, los títulos de las tablas */
+    color: #5E92C0; /* Color azul claro */
+    font-size: 12px;
+    margin: 10px 0px 10px 5px; /* Margen superior e inferior de 10px, margen izquierdo de 5px */
+    font-weight: bold;
+    text-align: center;
+}
+
+.nobr {
+    white-space: nowrap;
+}
+
+.marginleft12 {
+    margin-left: 12px;
+}
+
+.Altura60 {
+    height: 60px;
+}
+
+.Altura30 {
+    height: 30px;
+}
+
+.Ancho75Percent {
+    width: 75%;
+}
+
+.chbMove label {
+    position: relative;
+    bottom: 2.4px;
+}
+
+/****Otp****/
+.otpReintentar {
+    background-image: none !important;
+}
+
+    .otpReintentar a {
+        cursor: no-drop !important;
+        background-image: none !important;
+        background-color: rgba(110, 137, 173, 0.38);
+        color: white;
+    }
+
+.otpOcultar {
+    display: none !important;
+}
+
+.otpReintentar a {
+    cursor: no-drop !important;
+    background-image: none !important;
+    background-color: rgba(110, 137, 173, 0.38);
+    color: white;
+}
+
+/****Fin Otp****/
+#boton.botonAjuste a {
+    padding: 5px 18px 5px 16px;
+}
+
+h1.tituloh1 {
+    width: 100%;
+}
+
+.boton100 {
+    text-align: center;
+}
+
+    .boton100 a {
+        display: block;
+        width: 100px;
+    }
+
+
+
+/* ESTILOS PARA SERVICIOS*/
+/* Tabla de Servicios 
+	Para formar la tabla se deben colocar los siguientes estilos:
+	- tabla_servicio a la tabla que va a contener toda la información. 
+	  Ej: <table cellpadding="0" cellspacing="0" class="tabla_servicio">
+	- La primera fila de la tabla se debe definir como cabecera de columna. (Usar "th" en lugar de "td").
+	  Ej: <th width="15%" scope="col">Tipo</th>
+	- Se define el estilo de las filas pares en el TR que corresponda. 
+	  Ej:  <tr class="par">
+	- Se define en todas las celdas de la última columna el estilo ".saldo" para que queden a la dercha
+	  Ej: <td class="saldo">1.365,22</td> 
+	  Ej: <th class="saldo" scope="col">Saldo Disponible</th>
+	- Se define el estilo para la última fila llamado ".final"
+	  Ej: <tr class="final">
+*/
+
+.tabla_servicio {
+    width: 100%;
+    border: 0;
+    padding: 0;
+    border-spacing: 0;
+    text-align: left;
+}
+
+    .tabla_servicio th {
+        background-color: #5E92C0;
+        text-align: left;
+        color: white;
+        padding: 10px 10px !important;
+        /*font-size: 14px;*/
+    }
+
+.tabla_grid th {
+    font-size: 12px;
+}
+
+.tabla_grid .dataTables_filter {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    float: left;
+}
+
+/*.tabla_grid .grdHeader {
+    padding: 5px 10px;
+}*/
+
+.tabla_servicio h2 {
+    text-align: left;
+}
+
+.tabla_servicio .subtitulo {
+    width: 100%;
+    font-weight: bolder;
+}
+
+.tabla_servicio .Descripcion {
+    height: 30px;
+    width: 21%;
+}
+
+.tabla_servicio .Separacion {
+    height: 30px;
+    width: 10%;
+}
+
+.tabla_servicio .espacio {
+    height: 30px;
+    width: 2%;
+}
+
+.tabla_servicio .Datos {
+    height: 30px;
+    width: 67%;
+}
+
+
+a.tooltip {outline:none; }
+a.tooltip strong {line-height:30px;}
+a.tooltip:hover {text-decoration:none;} 
+a.tooltip span {
+    z-index:10;display:none; padding:14px 20px;
+    margin-top:-30px; margin-left:28px;
+    line-height:16px;
+}
+a.tooltip:hover span{
+    display:inline; position:absolute; color:#111;
+    border:2px solid #CCc; background:#fff;}
+.callout {z-index:20;position:absolute;top:30px;border:0;left:-12px;
+           
+}    
+a.tooltip span
+{
+    border-radius:4px;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;        
+    -moz-box-shadow: 5px 5px 8px #CCC;
+    -webkit-box-shadow: 5px 5px 8px #CCC;
+    box-shadow: 5px 5px 8px #CCC;
+} 
+
+/*////////////////////////*/
+
+/*
+Version: 3.5.2 Timestamp: Sat Nov  1 14:43:36 EDT 2014
+*/
+.select2-container {
+    /*margin: 0;*/
+    position: relative;
+    display: inline-block;
+    /* inline-block for ie7 */
+    zoom: 1;
+    *display: inline;
+    vertical-align: middle;
+    font-size:10px;
+}
+
+.select2-container,
+.select2-drop,
+.select2-search,
+.select2-search input {
+  /*
+    Force border-box so that % widths fit the parent
+    container without overlap because of margin/padding.
+    More Info : http://www.quirksmode.org/css/box.html
+  */
+  -webkit-box-sizing: border-box; /* webkit */
+     -moz-box-sizing: border-box; /* firefox */
+          box-sizing: border-box; /* css3 */
+          font-size:10px;
+}
+
+.select2-container .select2-choice {
+    display: block;
+    height: 21px;
+    padding: 0 0 0 3px;
+    overflow: hidden;
+    position: relative;
+
+    border: 1px solid #717171;
+    white-space: nowrap;
+    line-height: 21px;
+    color: #666666;
+    text-decoration: none;
+
+    border-radius: 2px;
+
+    background-clip: padding-box;
+
+    -webkit-touch-callout: none;
+      -webkit-user-select: none;
+         -moz-user-select: none;
+          -ms-user-select: none;
+              user-select: none;
+
+    background-color: #fff;
+    background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, #eee), color-stop(0.5, #fff));
+    background-image: -webkit-linear-gradient(center bottom, #eee 0%, #fff 50%);
+    background-image: -moz-linear-gradient(center bottom, #eee 0%, #fff 50%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr = '#ffffff', endColorstr = '#eeeeee', GradientType = 0);
+    background-image: linear-gradient(to top, #eee 0%, #fff 50%);
+}
+
+html[dir="rtl"] .select2-container .select2-choice {
+    padding: 0 8px 0 0;
+}
+
+.select2-container.select2-drop-above .select2-choice {
+    border-bottom-color: #aaa;
+
+    border-radius: 0 0 4px 4px;
+
+    background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, #eee), color-stop(0.9, #fff));
+    background-image: -webkit-linear-gradient(center bottom, #eee 0%, #fff 90%);
+    background-image: -moz-linear-gradient(center bottom, #eee 0%, #fff 90%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#eeeeee', GradientType=0);
+    background-image: linear-gradient(to bottom, #eee 0%, #fff 90%);
+}
+
+.select2-container.select2-allowclear .select2-choice .select2-chosen {
+    /*margin-right: 42px;*/
+}
+
+.select2-container .select2-choice > .select2-chosen {
+    margin-right: 21px;
+    display: block;
+    overflow: hidden;
+
+    white-space: nowrap;
+
+    text-overflow: ellipsis;
+    float: none;
+    width: auto;
+}
+
+html[dir="rtl"] .select2-container .select2-choice > .select2-chosen {
+    margin-left: 21px;
+    margin-right: 0;
+}
+
+.select2-container .select2-choice abbr {
+    display: none;
+    width: 12px;
+    height: 12px;
+    position: absolute;
+    right: 24px;
+    top: 8px;
+    font-size: 1px;
+    text-decoration: none;
+    border: 0;
+    background: url('../images/select2.png') right top no-repeat;
+    cursor: pointer;
+    outline: 0;
+}
+
+.select2-container.select2-allowclear .select2-choice abbr {
+    /*display: inline-block;*/
+}
+
+.select2-container .select2-choice abbr:hover {
+    background-position: right -11px;
+    cursor: pointer;
+}
+
+.select2-drop-mask {
+    border: 0;
+    margin: 0;
+    padding: 0;
+    position: fixed;
+    left: 0;
+    top: 0;
+    min-height: 100%;
+    min-width: 100%;
+    height: auto;
+    width: auto;
+    opacity: 0;
+    z-index: 9998;
+    /* styles required for IE to work */
+    background-color: #fff;
+    filter: alpha(opacity=0);
+}
+
+.select2-drop {
+    /*width: auto !important;*/
+    margin-top: -1px;
+    position: absolute;
+    z-index: 9999;
+    top: 100%;
+
+    background: #fff;
+    color: #606060 !important;
+    border: 1px solid #aaa;
+    border-top: 0;
+
+    border-radius: 0 0 4px 4px;
+
+    -webkit-box-shadow: 0 4px 5px rgba(0, 0, 0, .15);
+            box-shadow: 0 4px 5px rgba(0, 0, 0, .15);
+}
+
+.select2-drop.select2-drop-above {
+    margin-top: 1px;
+    border-top: 1px solid #aaa;
+    border-bottom: 0;
+
+    border-radius: 2px 2px 0 0;
+
+    -webkit-box-shadow: 0 -4px 5px rgba(0, 0, 0, .15);
+            box-shadow: 0 -4px 5px rgba(0, 0, 0, .15);
+}
+
+.select2-drop-active {
+    /*border: 1px solid #5897fb;
+    border-top: none;*/
+}
+
+.select2-drop.select2-drop-above.select2-drop-active {
+    /*border-top: 1px solid #5897fb;*/
+}
+
+.select2-drop-auto-width {
+    border-top: 1px solid #aaa;
+    width: auto;
+}
+
+.select2-drop-auto-width .select2-search {
+    padding-top: 4px;
+}
+
+.select2-container .select2-choice .select2-arrow {
+    display: inline-block;
+    width: 18px;
+    height: 100%;
+    position: absolute;
+    right: 0;
+    top: 0;
+
+    border-left: 1px solid #717171;
+    border-radius: 0 4px 4px 0;
+
+    background-clip: padding-box;
+
+    background: #ccc;
+    background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, #ccc), color-stop(0.6, #eee));
+    background-image: -webkit-linear-gradient(center bottom, #ccc 0%, #eee 60%);
+    background-image: -moz-linear-gradient(center bottom, #ccc 0%, #eee 60%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr = '#eeeeee', endColorstr = '#cccccc', GradientType = 0);
+    background-image: linear-gradient(to top, #ccc 0%, #eee 60%);
+}
+
+html[dir="rtl"] .select2-container .select2-choice .select2-arrow {
+    left: 0;
+    right: auto;
+
+    border-left: none;
+    border-right: 1px solid #aaa;
+    border-radius: 2px 0 0 2px;
+}
+
+.select2-container .select2-choice .select2-arrow b {
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: url('../images/select2.png') no-repeat 0 1px;
+}
+
+html[dir="rtl"] .select2-container .select2-choice .select2-arrow b {
+    background-position: 2px 1px;
+}
+
+.select2-search {
+    display: inline-block;
+    width: 100%;
+    min-height: 21px;
+    margin: 0;
+    padding-left: 4px;
+    padding-right: 4px;
+
+    position: relative;
+    z-index: 10000;
+
+    white-space: nowrap;
+}
+
+.select2-search input {
+    width: 100%;
+    height: auto !important;
+    min-height: 21px;
+    padding: 4px 20px 4px 5px;
+    margin: 0;
+
+    outline: 0;
+    /*font-family: sans-serif;*/
+    font-size: 10px;
+
+    border: 1px solid #aaa;
+    border-radius: 0;
+
+    -webkit-box-shadow: none;
+            box-shadow: none;
+
+    background: #fff url('../images/select2.png') no-repeat 100% -22px;
+    background: url('../images/select2.png') no-repeat 100% -22px, -webkit-gradient(linear, left bottom, left top, color-stop(0.85, #fff), color-stop(0.99, #eee));
+    background: url('../images/select2.png') no-repeat 100% -22px, -webkit-linear-gradient(center bottom, #fff 85%, #eee 99%);
+    background: url('../images/select2.png') no-repeat 100% -22px, -moz-linear-gradient(center bottom, #fff 85%, #eee 99%);
+    background: url('../images/select2.png') no-repeat 100% -22px, linear-gradient(to bottom, #fff 85%, #eee 99%) 0 0;
+}
+
+html[dir="rtl"] .select2-search input {
+    padding: 4px 5px 4px 20px;
+
+    background: #fff url('../images/select2.png') no-repeat -37px -22px;
+    background: url('../images/select2.png') no-repeat -37px -22px, -webkit-gradient(linear, left bottom, left top, color-stop(0.85, #fff), color-stop(0.99, #eee));
+    background: url('../images/select2.png') no-repeat -37px -22px, -webkit-linear-gradient(center bottom, #fff 85%, #eee 99%);
+    background: url('../images/select2.png') no-repeat -37px -22px, -moz-linear-gradient(center bottom, #fff 85%, #eee 99%);
+    background: url('../images/select2.png') no-repeat -37px -22px, linear-gradient(to bottom, #fff 85%, #eee 99%) 0 0;
+}
+
+.select2-drop.select2-drop-above .select2-search input {
+    margin-top: 4px;
+}
+
+.select2-search input.select2-active {
+    background: #fff url('../images/select2-spinner.gif') no-repeat 100%;
+    background: url('../images/select2-spinner.gif') no-repeat 100%, -webkit-gradient(linear, left bottom, left top, color-stop(0.85, #fff), color-stop(0.99, #eee));
+    background: url('../images/select2-spinner.gif') no-repeat 100%, -webkit-linear-gradient(center bottom, #fff 85%, #eee 99%);
+    background: url('../images/select2-spinner.gif') no-repeat 100%, -moz-linear-gradient(center bottom, #fff 85%, #eee 99%);
+    background: url('../images/select2-spinner.gif') no-repeat 100%, linear-gradient(to bottom, #fff 85%, #eee 99%) 0 0;
+}
+
+.select2-container-active .select2-choice,
+.select2-container-active .select2-choices {
+    /*border: 1px solid #5897fb;*/
+    outline: none;
+
+    -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, .3);
+            box-shadow: 0 0 5px rgba(0, 0, 0, .3);
+}
+
+.select2-dropdown-open .select2-choice {
+    border-bottom-color: transparent;
+    -webkit-box-shadow: 0 1px 0 #fff inset;
+            box-shadow: 0 1px 0 #fff inset;
+
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+
+    background-color: #eee;
+    background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, #fff), color-stop(0.5, #eee));
+    background-image: -webkit-linear-gradient(center bottom, #fff 0%, #eee 50%);
+    background-image: -moz-linear-gradient(center bottom, #fff 0%, #eee 50%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#eeeeee', endColorstr='#ffffff', GradientType=0);
+    background-image: linear-gradient(to top, #fff 0%, #eee 50%);
+}
+
+.select2-dropdown-open.select2-drop-above .select2-choice,
+.select2-dropdown-open.select2-drop-above .select2-choices {
+    /*border: 1px solid #5897fb;*/
+    border-top-color: transparent;
+
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #fff), color-stop(0.5, #eee));
+    background-image: -webkit-linear-gradient(center top, #fff 0%, #eee 50%);
+    background-image: -moz-linear-gradient(center top, #fff 0%, #eee 50%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#eeeeee', endColorstr='#ffffff', GradientType=0);
+    background-image: linear-gradient(to bottom, #fff 0%, #eee 50%);
+}
+
+.select2-dropdown-open .select2-choice .select2-arrow {
+    background: transparent;
+    border-left: none;
+    filter: none;
+}
+html[dir="rtl"] .select2-dropdown-open .select2-choice .select2-arrow {
+    border-right: none;
+}
+
+.select2-dropdown-open .select2-choice .select2-arrow b {
+    background-position: -18px 1px;
+}
+
+html[dir="rtl"] .select2-dropdown-open .select2-choice .select2-arrow b {
+    background-position: -16px 1px;
+}
+
+.select2-hidden-accessible {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+
+/* results */
+.select2-results {
+    max-height: 200px;
+    padding: 0 4px 0 4px;
+    margin: 4px 3px 4px 3px;
+    position: relative;
+    overflow-x: hidden;
+    overflow-y: auto;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    font-size:10px !important;
+}
+
+html[dir="rtl"] .select2-results {
+    padding: 0 4px 0 0;
+    margin: 4px 0 4px 4px;
+}
+
+.select2-results ul.select2-result-sub {
+    margin: 0;
+    padding-left: 0;
+}
+
+.select2-results li {
+    list-style: none;
+    display: list-item;
+    background-image: none;
+}
+
+.select2-results li.select2-result-with-children > .select2-result-label {
+    font-weight: bold;
+}
+
+.select2-results .select2-result-label {
+    padding: 2px 6px 0px;
+    margin: 0;
+    cursor: pointer;
+
+    min-height: 1em;
+
+    -webkit-touch-callout: none;
+      -webkit-user-select: none;
+         -moz-user-select: none;
+          -ms-user-select: none;
+              user-select: none;
+}
+
+.select2-results-dept-1 .select2-result-label { padding-left: 20px }
+.select2-results-dept-2 .select2-result-label { padding-left: 40px }
+.select2-results-dept-3 .select2-result-label { padding-left: 60px }
+.select2-results-dept-4 .select2-result-label { padding-left: 80px }
+.select2-results-dept-5 .select2-result-label { padding-left: 100px }
+.select2-results-dept-6 .select2-result-label { padding-left: 110px }
+.select2-results-dept-7 .select2-result-label { padding-left: 120px }
+
+.select2-results .select2-highlighted {
+    background: #3875d7;
+    color: #fff;
+}
+
+.select2-results li em {
+    background: #feffde;
+    font-style: normal;
+}
+
+.select2-results .select2-highlighted em {
+    background: transparent;
+}
+
+.select2-results .select2-highlighted ul {
+    background: #fff;
+    color: #000;
+}
+
+.select2-results .select2-no-results,
+.select2-results .select2-searching,
+.select2-results .select2-ajax-error,
+.select2-results .select2-selection-limit {
+    background: #f4f4f4;
+    display: list-item;
+    padding-left: 5px;
+}
+
+/*
+disabled look for disabled choices in the results dropdown
+*/
+.select2-results .select2-disabled.select2-highlighted {
+    color: #666;
+    background: #f4f4f4;
+    display: list-item;
+    cursor: default;
+}
+.select2-results .select2-disabled {
+  background: #f4f4f4;
+  display: list-item;
+  cursor: default;
+}
+
+.select2-results .select2-selected {
+    display: none;
+}
+
+.select2-more-results.select2-active {
+    background: #f4f4f4 url('../images/select2-spinner.gif') no-repeat 100%;
+}
+
+.select2-results .select2-ajax-error {
+    background: rgba(255, 50, 50, .2);
+}
+
+.select2-more-results {
+    background: #f4f4f4;
+    display: list-item;
+}
+
+/* disabled styles */
+
+.select2-container.select2-container-disabled .select2-choice {
+    background-color: #f4f4f4;
+    background-image: none;
+    border: 1px solid #ddd;
+    cursor: default;
+}
+
+.select2-container.select2-container-disabled .select2-choice .select2-arrow {
+    background-color: #f4f4f4;
+    background-image: none;
+    border-left: 0;
+}
+
+.select2-container.select2-container-disabled .select2-choice abbr {
+    display: none;
+}
+
+
+/* multiselect */
+
+.select2-container-multi .select2-choices {
+    height: auto !important;
+    height: 1%;
+    margin: 0;
+    padding: 0 5px 0 0;
+    position: relative;
+
+    border: 1px solid #aaa;
+    cursor: text;
+    overflow: hidden;
+
+    background-color: #fff;
+    background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(1%, #eee), color-stop(15%, #fff));
+    background-image: -webkit-linear-gradient(top, #eee 1%, #fff 15%);
+    background-image: -moz-linear-gradient(top, #eee 1%, #fff 15%);
+    background-image: linear-gradient(to bottom, #eee 1%, #fff 15%);
+}
+
+html[dir="rtl"] .select2-container-multi .select2-choices {
+    padding: 0 0 0 5px;
+}
+
+.select2-locked {
+  padding: 3px 5px 3px 5px !important;
+}
+
+.select2-container-multi .select2-choices {
+    min-height: 21px;
+}
+
+.select2-container-multi.select2-container-active .select2-choices {
+    /*border: 1px solid #5897fb;*/
+    outline: none;
+
+    -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, .3);
+            box-shadow: 0 0 5px rgba(0, 0, 0, .3);
+}
+.select2-container-multi .select2-choices li {
+    float: left;
+    list-style: none;
+}
+html[dir="rtl"] .select2-container-multi .select2-choices li
+{
+    float: right;
+}
+.select2-container-multi .select2-choices .select2-search-field {
+    margin: 0;
+    padding: 0;
+    white-space: nowrap;
+}
+
+.select2-container-multi .select2-choices .select2-search-field input {
+    padding: 5px;
+    margin: 1px 0;
+
+    font-family: sans-serif;
+    font-size: 100%;
+    color: #666;
+    outline: 0;
+    border: 0;
+    -webkit-box-shadow: none;
+            box-shadow: none;
+    background: transparent !important;
+}
+
+.select2-container-multi .select2-choices .select2-search-field input.select2-active {
+    background: #fff url('../images/select2-spinner.gif') no-repeat 100% !important;
+}
+
+.select2-default {
+    color: #999 !important;
+}
+
+.select2-container-multi .select2-choices .select2-search-choice {
+    padding: 3px 5px 3px 18px;
+    margin: 3px 0 3px 5px;
+    position: relative;
+
+    line-height: 13px;
+    color: #333;
+    cursor: default;
+    border: 1px solid #aaaaaa;
+
+    border-radius: 1.5px;
+
+    -webkit-box-shadow: 0 0 2px #fff inset, 0 1px 0 rgba(0, 0, 0, 0.05);
+            box-shadow: 0 0 2px #fff inset, 0 1px 0 rgba(0, 0, 0, 0.05);
+
+    background-clip: padding-box;
+
+    -webkit-touch-callout: none;
+      -webkit-user-select: none;
+         -moz-user-select: none;
+          -ms-user-select: none;
+              user-select: none;
+
+    background-color: #e4e4e4;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#eeeeee', endColorstr='#f4f4f4', GradientType=0);
+    background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(20%, #f4f4f4), color-stop(50%, #f0f0f0), color-stop(52%, #e8e8e8), color-stop(100%, #eee));
+    background-image: -webkit-linear-gradient(top, #f4f4f4 20%, #f0f0f0 50%, #e8e8e8 52%, #eee 100%);
+    background-image: -moz-linear-gradient(top, #f4f4f4 20%, #f0f0f0 50%, #e8e8e8 52%, #eee 100%);
+    background-image: linear-gradient(to bottom, #f4f4f4 20%, #f0f0f0 50%, #e8e8e8 52%, #eee 100%);
+}
+html[dir="rtl"] .select2-container-multi .select2-choices .select2-search-choice
+{
+    margin: 3px 5px 3px 0;
+    padding: 3px 18px 3px 5px;
+}
+.select2-container-multi .select2-choices .select2-search-choice .select2-chosen {
+    cursor: default;
+}
+.select2-container-multi .select2-choices .select2-search-choice-focus {
+    background: #d4d4d4;
+}
+
+.select2-search-choice-close {
+    display: block;
+    width: 12px;
+    height: 13px;
+    position: absolute;
+    right: 3px;
+    top: 4px;
+
+    font-size: 1px;
+    outline: none;
+    background: url('../images/select2.png') right top no-repeat;
+}
+html[dir="rtl"] .select2-search-choice-close {
+    right: auto;
+    left: 3px;
+}
+
+.select2-container-multi .select2-search-choice-close {
+    left: 3px;
+}
+
+html[dir="rtl"] .select2-container-multi .select2-search-choice-close {
+    left: auto;
+    right: 2px;
+}
+
+.select2-container-multi .select2-choices .select2-search-choice .select2-search-choice-close:hover {
+  background-position: right -11px;
+}
+.select2-container-multi .select2-choices .select2-search-choice-focus .select2-search-choice-close {
+    background-position: right -11px;
+}
+
+/* disabled styles */
+.select2-container-multi.select2-container-disabled .select2-choices {
+    background-color: #f4f4f4;
+    background-image: none;
+    border: 1px solid #ddd;
+    cursor: default;
+}
+
+.select2-container-multi.select2-container-disabled .select2-choices .select2-search-choice {
+    padding: 3px 5px 3px 5px;
+    border: 1px solid #ddd;
+    background-image: none;
+    background-color: #f4f4f4;
+}
+
+.select2-container-multi.select2-container-disabled .select2-choices .select2-search-choice .select2-search-choice-close {    display: none;
+    background: none;
+}
+/* end multiselect */
+
+
+.select2-result-selectable .select2-match,
+.select2-result-unselectable .select2-match {
+    text-decoration: underline;
+}
+
+.select2-offscreen, .select2-offscreen:focus {
+    clip: rect(0 0 0 0) !important;
+    width: 1px !important;
+    height: 1px !important;
+    border: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+    position: absolute !important;
+    outline: 0 !important;
+    left: 0px !important;
+    top: 0px !important;
+}
+
+.select2-display-none {
+    display: none;
+}
+
+.select2-measure-scrollbar {
+    position: absolute;
+    top: -10000px;
+    left: -10000px;
+    width: 100px;
+    height: 100px;
+    overflow: scroll;
+}
+
+/* Retina-ize icons */
+
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-resolution: 2dppx)  {
+    .select2-search input,
+    .select2-search-choice-close,
+    .select2-container .select2-choice abbr,
+    .select2-container .select2-choice .select2-arrow b {
+        background-image: url('../images/select2x2.png') !important;
+        background-repeat: no-repeat !important;
+        background-size: 60px 40px !important;
+    }
+
+    .select2-search input {
+        background-position: 100% -21px !important;
+    }
+}
+
+/* Rodolfo Ortiz 31/08/2012
+Estilos del control SIBEL\Comun\UserControls\Header.ascx 
+*/
+
+#BannerNuevo
+{
+    width: 790px;
+    height: 99px; 
+    background-image:url('bannerNuevo.png');
+}
+#contenedorBienvenida
+{
+    /*height: 95px;*/
+    height: 15px; /*width: 500px;*/
+    width: 400px;
+    padding-top: 80px;
+    padding-left: 100px;
+    float: left;
+}
+#ContenedorFecha
+{
+    width: 236px;
+    height: 55px;
+    text-align: right;
+    padding-top: 40px;
+    float: left;
+    line-height: 1.5;
+}
+
+.estiloNuevoBanner
+{
+    color: #004080; /*  font-weight: bold;*/
+    font-size: 8pt;
+    font-family: Arial;
+}
+.estiloNuevoBannerNombre
+{
+    color: #004080;
+    font-weight: bold;
+    font-size: 9pt;
+    font-family: Arial;
+}
+
+
