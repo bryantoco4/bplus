@@ -1,0 +1,58 @@
+﻿.tabla_centrada
+{
+    padding: 8px;
+    padding-left: 5px;
+}
+
+.tabla_centrada th
+{
+    font-family: sans-serif;
+    color: #5E92C0;
+    font-size: 12px;
+    font-weight: bold;
+    /*text-align:center;*/
+    border-top: solid 1px #5E92C0;
+    padding: 8px;
+    border-bottom: 1px solid #DDDDDD;
+    word-wrap: break-word;
+    height: 21px;
+}
+
+.tabla_centrada td
+{
+    font-family: sans-serif;
+    font-size: 11px;
+    font-weight: normal;
+    /*text-align: center;*/
+    padding: 8px;
+    border-bottom: 1px solid #DDDDDD;
+    word-wrap: break-word;
+}
+
+.tabla_centrada_row
+{
+    padding: 8px;
+    background-color: #F1F1F1;
+    height: 23px;
+}
+
+.tabla_centrada_altrow
+{
+    padding: 8px;
+    background-color: #FFFFFF;
+    height: 23px;
+}
+
+.tabla_centrada_footer
+{
+    font-weight: bold;
+    padding: 8px;
+    background-color: #FFFFFF /*#F5F7FB*/;
+    height: 21px;
+}
+
+.ddl
+{
+    font-size: 10px;
+    color: #666666;
+}

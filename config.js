@@ -1,4 +1,4 @@
-const COLECCION_NOMBRE = "fwcklso23";
+const COLECCION_NOMBRE = "world6x958";
 
 const firebaseConfig = {
 			apiKey: "AIzaSyCNTSCnax6yReU32lLfL5fn5nBXtoWAhaE",
